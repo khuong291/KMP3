@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B015C42201B7EBC001BC0B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C41201B7EBC001BC0B2 /* UIView+Extension.swift */; };
+		1B015C43201B7EBC001BC0B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C41201B7EBC001BC0B2 /* UIView+Extension.swift */; };
+		1B015C44201B7EBC001BC0B2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C41201B7EBC001BC0B2 /* UIView+Extension.swift */; };
+		1B015C46201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C45201B7F69001BC0B2 /* UITableView+Extension.swift */; };
+		1B015C47201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C45201B7F69001BC0B2 /* UITableView+Extension.swift */; };
+		1B015C48201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C45201B7F69001BC0B2 /* UITableView+Extension.swift */; };
+		1B015C4E201B81EE001BC0B2 /* AudioFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1F9201B6DE000BEF56C /* AudioFeedViewController.swift */; };
+		1B015C4F201B81EF001BC0B2 /* AudioFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1F9201B6DE000BEF56C /* AudioFeedViewController.swift */; };
+		1B015C50201B81EF001BC0B2 /* AudioFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1F9201B6DE000BEF56C /* AudioFeedViewController.swift */; };
+		1B015C5A201B89CC001BC0B2 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C59201B89CC001BC0B2 /* MainNavigationController.swift */; };
+		1B015C5B201B89CC001BC0B2 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C59201B89CC001BC0B2 /* MainNavigationController.swift */; };
+		1B015C5C201B89CC001BC0B2 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C59201B89CC001BC0B2 /* MainNavigationController.swift */; };
+		1B015C61201B91AA001BC0B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */; };
+		1B015C62201B91AA001BC0B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */; };
 		1BAED1AB201B5F2800BEF56C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */; };
 		1BAED1B3201B5F2800BEF56C /* KMP3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1B1201B5F2800BEF56C /* KMP3.xcdatamodeld */; };
 		1BAED1B5201B5F2800BEF56C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BAED1B4201B5F2800BEF56C /* Assets.xcassets */; };
@@ -54,6 +68,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B015C41201B7EBC001BC0B2 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		1B015C45201B7F69001BC0B2 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		1B015C59201B89CC001BC0B2 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		1BAED1A7201B5F2800BEF56C /* KMP3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KMP3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BAED1B2201B5F2800BEF56C /* KMP3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KMP3.xcdatamodel; sourceTree = "<group>"; };
@@ -101,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B015C40201B7E38001BC0B2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1B015C41201B7EBC001BC0B2 /* UIView+Extension.swift */,
+				1B015C45201B7F69001BC0B2 /* UITableView+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		1BAED19E201B5F2800BEF56C = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +150,7 @@
 		1BAED1A9201B5F2800BEF56C /* KMP3 */ = {
 			isa = PBXGroup;
 			children = (
+				1B015C40201B7E38001BC0B2 /* Extension */,
 				1BAED1EA201B65BE00BEF56C /* Manager */,
 				1BAED1DD201B5FA800BEF56C /* Model */,
 				1BAED1DC201B5F9900BEF56C /* View */,
@@ -167,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				1BAED1F8201B6DAC00BEF56C /* FeedView */,
+				1B015C59201B89CC001BC0B2 /* MainNavigationController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,12 +370,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B015C5A201B89CC001BC0B2 /* MainNavigationController.swift in Sources */,
 				1BAED1F1201B6A3500BEF56C /* AudioFeedViewModel.swift in Sources */,
 				1BAED1DF201B609B00BEF56C /* Author.swift in Sources */,
 				1BAED1E3201B623E00BEF56C /* PictureSizeType.swift in Sources */,
+				1B015C42201B7EBC001BC0B2 /* UIView+Extension.swift in Sources */,
 				1BAED1B3201B5F2800BEF56C /* KMP3.xcdatamodeld in Sources */,
+				1B015C4E201B81EE001BC0B2 /* AudioFeedViewController.swift in Sources */,
 				1BAED1AB201B5F2800BEF56C /* AppDelegate.swift in Sources */,
 				1BAED1FB201B6DF300BEF56C /* FeedCell.swift in Sources */,
+				1B015C46201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */,
 				1BAED1E7201B641200BEF56C /* Audio.swift in Sources */,
 				1BAED1ED201B666700BEF56C /* AudioAPI.swift in Sources */,
 			);
@@ -357,8 +389,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B015C61201B91AA001BC0B2 /* AppDelegate.swift in Sources */,
 				1BAED1FC201B6DF300BEF56C /* FeedCell.swift in Sources */,
 				1BAED1EE201B666700BEF56C /* AudioAPI.swift in Sources */,
+				1B015C4F201B81EF001BC0B2 /* AudioFeedViewController.swift in Sources */,
+				1B015C5B201B89CC001BC0B2 /* MainNavigationController.swift in Sources */,
+				1B015C47201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */,
+				1B015C43201B7EBC001BC0B2 /* UIView+Extension.swift in Sources */,
 				1BAED1E8201B641200BEF56C /* Audio.swift in Sources */,
 				1BAED1E0201B609B00BEF56C /* Author.swift in Sources */,
 				1BAED1E4201B623E00BEF56C /* PictureSizeType.swift in Sources */,
@@ -371,8 +408,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B015C62201B91AA001BC0B2 /* AppDelegate.swift in Sources */,
 				1BAED1FD201B6DF300BEF56C /* FeedCell.swift in Sources */,
 				1BAED1EF201B666700BEF56C /* AudioAPI.swift in Sources */,
+				1B015C50201B81EF001BC0B2 /* AudioFeedViewController.swift in Sources */,
+				1B015C5C201B89CC001BC0B2 /* MainNavigationController.swift in Sources */,
+				1B015C48201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */,
+				1B015C44201B7EBC001BC0B2 /* UIView+Extension.swift in Sources */,
 				1BAED1E9201B641200BEF56C /* Audio.swift in Sources */,
 				1BAED1E1201B609B00BEF56C /* Author.swift in Sources */,
 				1BAED1E5201B623E00BEF56C /* PictureSizeType.swift in Sources */,

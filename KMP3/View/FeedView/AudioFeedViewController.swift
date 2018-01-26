@@ -39,7 +39,8 @@ final class AudioFeedViewController: UIViewController {
     
     private func setupUI() {
         tableView.separatorStyle = .none
-        tableView.register
+        let nib = UINib(nibName: FeedCell.reuseIdentifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: FeedCell.reuseIdentifier)
         view.addSubview(tableView)
     }
 }

@@ -15,7 +15,7 @@ enum Result<Value> {
 class AudioAPI {
     static let shared = AudioAPI()
     
-    func getAudios(from url: URL, completion: @escaping (Result<[Audio]>) -> ()) {
+    func fetchAudios(from url: URL, completion: @escaping (Result<[Audio]>) -> ()) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         

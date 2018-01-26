@@ -13,8 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let viewModel = AudioFeedViewModel()
+        let audioFeedVC = AudioFeedViewController(viewModel: viewModel)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.backgroundColor = UIColor.white
+        window!.rootViewController = audioFeedVC
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
