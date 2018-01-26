@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Author {
-    var name: String
-    var pictures: [PictureSizeType]
+struct Author: Codable {
+    let name: String
+    let picture: Picture
 }

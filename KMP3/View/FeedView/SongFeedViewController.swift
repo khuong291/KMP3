@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-final class AudioFeedViewController: UIViewController {
+final class SongFeedViewController: UIViewController {
     
     fileprivate let tableView = UITableView()
     
-    let viewModel: AudioFeedViewModel
+    let viewModel: SongFeedViewModel
     
-    init(viewModel: AudioFeedViewModel) {
+    init(viewModel: SongFeedViewModel) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)

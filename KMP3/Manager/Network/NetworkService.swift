@@ -1,21 +1,14 @@
 //
-//  AudioAPI.swift
+//  NetworkService.swift
 //  KMP3
 //
-//  Created by KhuongPham on 1/26/18.
+//  Created by KhuongPham on 1/27/18.
 //
 
 import Foundation
 
-enum Result<Value> {
-    case success(Value)
-    case failure(Error)
-}
-
-class AudioAPI {
-    static let shared = AudioAPI()
-    
-    func fetchAudios(from url: URL, completion: @escaping (Result<[Audio]>) -> ()) {
+class NetworkService {
+    func fetchSongs(from url: URL, completion: @escaping (Result<[Song]>) -> ()) {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
@@ -27,7 +20,7 @@ class AudioAPI {
             if let data = data {
                 let decoder = JSONDecoder()
                 do {
-                    let audios = try decoder.decode([Audio].self, from: data)
+                    let audios = try decoder.decode([Song].self, from: data)
                     completion(.success(audios))
                 } catch {
                     completion(.failure(error))
