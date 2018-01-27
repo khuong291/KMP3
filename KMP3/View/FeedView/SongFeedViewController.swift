@@ -24,17 +24,15 @@ final class SongFeedViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        super.loadView()
-        
-        let mainView = UIView(frame: UIScreen.main.bounds)
-        view = mainView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.songsSignal.bind { songs in
+            print(songs)
+        }
+        
         setupUI()
+        viewModel.fetchSongs()
     }
     
     private func setupUI() {

@@ -7,11 +7,18 @@
 
 import Foundation
 
+struct DataHolder<T: Codable>: Codable {
+    let data: T
+}
+
 class NetworkService {
+    let session: URLSession
+    
+    init(config: URLSessionConfiguration = URLSessionConfiguration.default) {
+        self.session = URLSession(configuration: config)
+    }
+    
     func fetchSongs(from url: URL, completion: @escaping (Result<[Song]>) -> ()) {
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
@@ -19,9 +26,10 @@ class NetworkService {
             
             if let data = data {
                 let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
                 do {
-                    let audios = try decoder.decode([Song].self, from: data)
-                    completion(.success(audios))
+                    let response = try decoder.decode(DataHolder<[Song]>.self, from: data)
+                    completion(.success(response.data))
                 } catch {
                     completion(.failure(error))
                 }
@@ -34,3 +42,4 @@ class NetworkService {
         task.resume()
     }
 }
+
