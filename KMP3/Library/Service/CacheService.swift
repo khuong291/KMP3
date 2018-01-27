@@ -22,13 +22,17 @@ final class CacheService {
                 appropriateFor: nil,
                 create: true
             )
-            self.diskPath = documentDirectory.appendingPathComponent("Khuong_Mp3")
+            diskPath = documentDirectory.appendingPathComponent("Khuong_Mp3")
+            
+            if !fileManager.fileExists(atPath: diskPath.path) {
+                try fileManager.createDirectory(at: diskPath, withIntermediateDirectories: false, attributes: nil)
+            }
         } catch {
             fatalError()
         }
     }
     
-    func fetchData(url: URL, completion: @escaping (Data) -> Void) {
+    func loadData(url: URL, completion: @escaping (Data?) -> Void) {
         DispatchQueue.global().async {
             /// If object is in memory
             if let data = self.memory.object(forKey: url.absoluteString as NSString) {
@@ -37,18 +41,23 @@ final class CacheService {
             }
             
             /// If object is in disk
-            if let data = try? Data(contentsOf: url) {
+            if let data = try? Data(contentsOf: self.filePath(url: url)) {
                 /// Set back to memory
                 self.memory.setObject(data as NSData, forKey: url.absoluteString as NSString)
                 completion(data)
+                return
             }
+            
+            completion(nil)
         }
     }
     
-    func fetchImage(url: URL, completion: @escaping (UIImage) -> Void) {
-        fetchData(url: url, completion: { data in
-            if let image = UIImage(data: data) {
+    func loadImage(url: URL, completion: @escaping (UIImage?) -> Void) {
+        loadData(url: url, completion: { data in
+            if let data = data, let image = UIImage(data: data) {
                 completion(image)
+            } else {
+                completion(nil)
             }
         })
     }
@@ -75,7 +84,15 @@ final class CacheService {
     func save(data: Data, url: URL) {
         DispatchQueue.global().async {
             self.memory.setObject(data as NSData, forKey: url.absoluteString as NSString)
-            try? data.write(to: url)
+            do {
+                try data.write(to: self.filePath(url: url))
+            } catch {
+                print(error)
+            }
         }
+    }
+    
+    private func filePath(url: URL) -> URL {
+        return diskPath.appendingPathComponent(url.path)
     }
 }

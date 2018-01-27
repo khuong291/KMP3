@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let viewModel = FeedViewModel(networkService: NetworkService(), playerService: PlayerService())
+        let viewModel = FeedViewModel(networkService: NetworkService(), playerService: PlayerService(cacheService: CacheService()))
         let songFeedController = FeedViewController(viewModel: viewModel)
         
         window = UIWindow(frame: UIScreen.main.bounds)

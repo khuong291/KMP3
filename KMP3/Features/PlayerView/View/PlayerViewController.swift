@@ -32,7 +32,7 @@ final class PlayerViewController: UIViewController {
     }
     
     private func setupUI() {
-        songImageView.loadImage(from: viewModel.song.picture.large.absoluteString)
+//        songImageView.loadImage(from: viewModel.song.picture.large.absoluteString)
     }
     
     @IBAction func minimizeButtonTapped(_ sender: UIButton) {
