@@ -58,6 +58,12 @@
 		1BAFB213201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */; };
 		1BAFB214201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */; };
 		1BAFB215201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */; };
+		1BAFB218201C4507001B0B2D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB217201C4507001B0B2D /* PlayerViewController.swift */; };
+		1BAFB219201C4507001B0B2D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB217201C4507001B0B2D /* PlayerViewController.swift */; };
+		1BAFB21A201C4507001B0B2D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB217201C4507001B0B2D /* PlayerViewController.swift */; };
+		1BAFB21C201C4639001B0B2D /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */; };
+		1BAFB21D201C4639001B0B2D /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */; };
+		1BAFB21E201C4639001B0B2D /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +111,8 @@
 		1BAED1FA201B6DF300BEF56C /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1BAED1FE201B6E2900BEF56C /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		1BAFB217201C4507001B0B2D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				1BAED1F8201B6DAC00BEF56C /* FeedView */,
+				1BAFB216201C44EE001B0B2D /* PlayerView */,
 				1B015C59201B89CC001BC0B2 /* MainNavigationController.swift */,
 			);
 			path = View;
@@ -259,6 +268,15 @@
 				1BAED1FE201B6E2900BEF56C /* FeedCell.xib */,
 			);
 			path = FeedView;
+			sourceTree = "<group>";
+		};
+		1BAFB216201C44EE001B0B2D /* PlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				1BAFB217201C4507001B0B2D /* PlayerViewController.swift */,
+				1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */,
+			);
+			path = PlayerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAED1FF201B6E2900BEF56C /* FeedCell.xib in Resources */,
+				1BAFB21C201C4639001B0B2D /* PlayerViewController.xib in Resources */,
 				1BAED1B8201B5F2800BEF56C /* LaunchScreen.storyboard in Resources */,
 				1BAED1B5201B5F2800BEF56C /* Assets.xcassets in Resources */,
 			);
@@ -378,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAED200201B6E2900BEF56C /* FeedCell.xib in Resources */,
+				1BAFB21D201C4639001B0B2D /* PlayerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAED201201B6E2900BEF56C /* FeedCell.xib in Resources */,
+				1BAFB21E201C4639001B0B2D /* PlayerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAFB213201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */,
+				1BAFB218201C4507001B0B2D /* PlayerViewController.swift in Sources */,
 				1B015C70201BA2B9001BC0B2 /* Song.swift in Sources */,
 				1B015C83201BA637001BC0B2 /* SongFeedViewController.swift in Sources */,
 				1B015C5A201B89CC001BC0B2 /* MainNavigationController.swift in Sources */,
@@ -434,6 +456,7 @@
 				1BAED1E0201B609B00BEF56C /* Author.swift in Sources */,
 				1BAED1C3201B5F2800BEF56C /* KMP3Tests.swift in Sources */,
 				1B015C65201B9F23001BC0B2 /* NetworkService.swift in Sources */,
+				1BAFB219201C4507001B0B2D /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAFB215201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */,
+				1BAFB21A201C4507001B0B2D /* PlayerViewController.swift in Sources */,
 				1B015C72201BA2B9001BC0B2 /* Song.swift in Sources */,
 				1B015C82201BA637001BC0B2 /* SongFeedViewController.swift in Sources */,
 				1B015C62201B91AA001BC0B2 /* AppDelegate.swift in Sources */,

@@ -52,14 +52,17 @@
                                     <constraint firstAttribute="height" constant="18" id="vTU-P5-owi"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEP-98-1Jo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEP-98-1Jo">
                                 <rect key="frame" x="266" y="250" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BgR-eK-7o0"/>
                                     <constraint firstAttribute="width" constant="40" id="z3H-5J-jNv"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
+                                <inset key="imageEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="ic_arrow_right"/>
+                                <connections>
+                                    <action selector="goToPlayerButtonTapped:" destination="pCu-BY-lep" eventType="touchUpInside" id="yaK-UB-7hc"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00/0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBi-f7-Q7v">
                                 <rect key="frame" x="237.5" y="290" width="68.5" height="18"/>
@@ -74,6 +77,9 @@
                                     <constraint firstAttribute="width" constant="55" id="z66-Uf-w57"/>
                                 </constraints>
                                 <state key="normal" image="ic_pause_rounded"/>
+                                <connections>
+                                    <action selector="playPauseButtonTapped:" destination="pCu-BY-lep" eventType="touchUpInside" id="g5w-Iz-Voa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

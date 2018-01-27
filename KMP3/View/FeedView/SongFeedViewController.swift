@@ -69,10 +69,22 @@ extension SongFeedViewController: UITableViewDelegate {
         
         let song = viewModel.songsSignal.value[indexPath.row]
         cell.song = song
+        cell.delegate = self
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.width + 64
+    }
+}
+
+extension SongFeedViewController: FeedCellDelegate {
+    func didSelectGoToPlayerButton(_ song: Song) {
+        let playerVC = PlayerViewController()
+        present(playerVC, animated: true, completion: nil)
+    }
+    
+    func didSelectPlayPauseButton(_ song: Song) {
+        
     }
 }
 

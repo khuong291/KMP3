@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+protocol FeedCellDelegate: class {
+    func didSelectGoToPlayerButton(_ song: Song)
+    func didSelectPlayPauseButton(_ song: Song)
+}
+
 final class FeedCell: UITableViewCell {
     @IBOutlet weak var songImageView: UIImageView!
     @IBOutlet weak var songNameLabel: UILabel!
@@ -30,6 +35,8 @@ final class FeedCell: UITableViewCell {
         }
     }
     
+    weak var delegate: FeedCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -40,5 +47,15 @@ final class FeedCell: UITableViewCell {
         super.layoutSubviews()
         
         authorImageView.roundCircle()
+    }
+    
+    @IBAction func goToPlayerButtonTapped(_ sender: UIButton) {
+        guard let song = song else { return }
+        delegate?.didSelectGoToPlayerButton(song)
+    }
+    
+    @IBAction func playPauseButtonTapped(_ sender: UIButton) {
+        guard let song = song else { return }
+        delegate?.didSelectPlayPauseButton(song)
     }
 }

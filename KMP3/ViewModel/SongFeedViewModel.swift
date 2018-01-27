@@ -22,8 +22,8 @@ final class SongFeedViewModel {
             switch result {
             case .success(let songs):
                 self?.songsSignal.value = songs
-            case .failure(let error):
-                fatalError("error: \(error.localizedDescription)")
+            case .failure(_):
+                break
             }
         }
     }
