@@ -32,6 +32,8 @@
 		1BC202C4201C5FE3007C3E89 /* SongFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202BD201C5FE3007C3E89 /* SongFeedViewController.swift */; };
 		1BC202C5201C5FE3007C3E89 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202BE201C5FE3007C3E89 /* FeedCell.swift */; };
 		1BC202C6201C5FE3007C3E89 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC202BF201C5FE3007C3E89 /* FeedCell.xib */; };
+		1BC202CA201CA4F7007C3E89 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202C9201CA4F7007C3E89 /* MiniPlayerViewController.swift */; };
+		1BC202CC201CA520007C3E89 /* MiniPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC202CB201CA520007C3E89 /* MiniPlayerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		1BC202BD201C5FE3007C3E89 /* SongFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongFeedViewController.swift; sourceTree = "<group>"; };
 		1BC202BE201C5FE3007C3E89 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1BC202BF201C5FE3007C3E89 /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		1BC202C9201CA4F7007C3E89 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
+		1BC202CB201CA520007C3E89 /* MiniPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPlayerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,7 @@
 		1BC202B2201C5FE3007C3E89 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				1BC202C7201CA443007C3E89 /* MiniPlayer */,
 				1BC202B3201C5FE3007C3E89 /* PlayerView */,
 				1BC202B9201C5FE3007C3E89 /* FeedView */,
 			);
@@ -267,6 +272,23 @@
 				1BC202BD201C5FE3007C3E89 /* SongFeedViewController.swift */,
 				1BC202BE201C5FE3007C3E89 /* FeedCell.swift */,
 				1BC202BF201C5FE3007C3E89 /* FeedCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1BC202C7201CA443007C3E89 /* MiniPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1BC202C8201CA448007C3E89 /* View */,
+			);
+			path = MiniPlayer;
+			sourceTree = "<group>";
+		};
+		1BC202C8201CA448007C3E89 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1BC202C9201CA4F7007C3E89 /* MiniPlayerViewController.swift */,
+				1BC202CB201CA520007C3E89 /* MiniPlayerViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -378,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAED1B8201B5F2800BEF56C /* LaunchScreen.storyboard in Resources */,
+				1BC202CC201CA520007C3E89 /* MiniPlayerViewController.xib in Resources */,
 				1BC202C6201C5FE3007C3E89 /* FeedCell.xib in Resources */,
 				1BAED1B5201B5F2800BEF56C /* Assets.xcassets in Resources */,
 				1BC202C1201C5FE3007C3E89 /* PlayerViewController.xib in Resources */,
@@ -420,6 +443,7 @@
 				1BC202C4201C5FE3007C3E89 /* SongFeedViewController.swift in Sources */,
 				1BC202C5201C5FE3007C3E89 /* FeedCell.swift in Sources */,
 				1BC202AA201C5FD1007C3E89 /* UIView+Extension.swift in Sources */,
+				1BC202CA201CA4F7007C3E89 /* MiniPlayerViewController.swift in Sources */,
 				1BAED1AB201B5F2800BEF56C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +608,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 555LCL8R2S;
 				INFOPLIST_FILE = KMP3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.kasler.KMP3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -599,6 +624,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 555LCL8R2S;
 				INFOPLIST_FILE = KMP3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.kasler.KMP3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
