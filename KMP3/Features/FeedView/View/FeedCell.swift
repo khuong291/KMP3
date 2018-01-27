@@ -30,8 +30,8 @@ final class FeedCell: UITableViewCell {
             songNameLabel.text = song.name
             authorNameLabel.text = song.author.name
             authorNameLabel2.text = song.author.name
-//            songImageView.loadImage(from: song.picture.large.absoluteString)
-//            authorImageView.loadImage(from: song.author.picture.small.absoluteString)
+            songImageView.loadImage(url: song.picture.large)
+            authorImageView.loadImage(url: song.author.picture.small)
         }
     }
     

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Use for adding constraint without resizing mask
 struct Constraint {
     static func on(constraints: [NSLayoutConstraint]) {
         constraints.forEach {

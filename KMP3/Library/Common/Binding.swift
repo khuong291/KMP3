@@ -5,6 +5,7 @@
 //  Created by KhuongPham on 1/27/18.
 //
 
+/// Use for binding data to view
 class Binding<T> {
     var value: T {
         didSet {

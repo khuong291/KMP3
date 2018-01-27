@@ -93,6 +93,7 @@ final class CacheService {
     }
     
     private func filePath(url: URL) -> URL {
-        return diskPath.appendingPathComponent(url.path)
+        // Use base64 to avoid multiple splashes 
+        return diskPath.appendingPathComponent(url.path.toBase64())
     }
 }

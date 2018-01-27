@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1B015C7D201BA476001BC0B2 /* SongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C7B201BA476001BC0B2 /* SongTests.swift */; };
 		1B8A4997201CD5A800E96682 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A4996201CD5A800E96682 /* CacheService.swift */; };
+		1B8A4999201CE8A500E96682 /* ImageFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A4998201CE8A500E96682 /* ImageFetchingService.swift */; };
+		1B8A499B201CEA4F00E96682 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A499A201CEA4F00E96682 /* UIImageView+Extension.swift */; };
+		1B8A499D201CF2A100E96682 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A499C201CF2A100E96682 /* String+Extension.swift */; };
+		1B8A499E201CF79B00E96682 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B8A4995201CD38E00E96682 /* PlayerViewController.xib */; };
 		1BAED1AB201B5F2800BEF56C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */; };
 		1BAED1B3201B5F2800BEF56C /* KMP3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1B1201B5F2800BEF56C /* KMP3.xcdatamodeld */; };
 		1BAED1B5201B5F2800BEF56C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BAED1B4201B5F2800BEF56C /* Assets.xcassets */; };
@@ -56,6 +60,9 @@
 		1B015C7B201BA476001BC0B2 /* SongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTests.swift; sourceTree = "<group>"; };
 		1B8A4995201CD38E00E96682 /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		1B8A4996201CD5A800E96682 /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		1B8A4998201CE8A500E96682 /* ImageFetchingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetchingService.swift; sourceTree = "<group>"; };
+		1B8A499A201CEA4F00E96682 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		1B8A499C201CF2A100E96682 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1BAED1A7201B5F2800BEF56C /* KMP3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KMP3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BAED1B2201B5F2800BEF56C /* KMP3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KMP3.xcdatamodel; sourceTree = "<group>"; };
@@ -182,6 +189,8 @@
 			children = (
 				1BC2029E201C5FD1007C3E89 /* UIView+Extension.swift */,
 				1BC2029F201C5FD1007C3E89 /* UITableView+Extension.swift */,
+				1B8A499A201CEA4F00E96682 /* UIImageView+Extension.swift */,
+				1B8A499C201CF2A100E96682 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -212,6 +221,7 @@
 				1BC202A8201C5FD1007C3E89 /* NetworkService.swift */,
 				1BC202CF201CCA0B007C3E89 /* PlayerService.swift */,
 				1B8A4996201CD5A800E96682 /* CacheService.swift */,
+				1B8A4998201CE8A500E96682 /* ImageFetchingService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -403,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BAED1B8201B5F2800BEF56C /* LaunchScreen.storyboard in Resources */,
+				1B8A499E201CF79B00E96682 /* PlayerViewController.xib in Resources */,
 				1BC202CC201CA520007C3E89 /* MiniPlayerViewController.xib in Resources */,
 				1BC202C6201C5FE3007C3E89 /* FeedCell.xib in Resources */,
 				1BAED1B5201B5F2800BEF56C /* Assets.xcassets in Resources */,
@@ -439,14 +450,17 @@
 				1BC202AB201C5FD1007C3E89 /* UITableView+Extension.swift in Sources */,
 				1BC202D0201CCA0B007C3E89 /* PlayerService.swift in Sources */,
 				1BC202AE201C5FD1007C3E89 /* Song.swift in Sources */,
+				1B8A499B201CEA4F00E96682 /* UIImageView+Extension.swift in Sources */,
 				1BC202C2201C5FE3007C3E89 /* PlayerViewController.swift in Sources */,
 				1BC202D3201CCB89007C3E89 /* FeedViewController.swift in Sources */,
+				1B8A499D201CF2A100E96682 /* String+Extension.swift in Sources */,
 				1BC202B0201C5FD1007C3E89 /* Result.swift in Sources */,
 				1BC202AD201C5FD1007C3E89 /* Picture.swift in Sources */,
 				1B8A4997201CD5A800E96682 /* CacheService.swift in Sources */,
 				1BC202C0201C5FE3007C3E89 /* PlayerViewModel.swift in Sources */,
 				1BC202C5201C5FE3007C3E89 /* FeedCell.swift in Sources */,
 				1BC202AA201C5FD1007C3E89 /* UIView+Extension.swift in Sources */,
+				1B8A4999201CE8A500E96682 /* ImageFetchingService.swift in Sources */,
 				1BC202CA201CA4F7007C3E89 /* MiniPlayerViewController.swift in Sources */,
 				1BAED1AB201B5F2800BEF56C /* AppDelegate.swift in Sources */,
 			);
