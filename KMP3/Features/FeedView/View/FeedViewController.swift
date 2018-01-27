@@ -116,7 +116,7 @@ extension FeedViewController: FeedCellDelegate {
     }
     
     func didSelectPlayPauseButton(_ song: Song) {
-        
+        viewModel.playerService.play(song: song)
     }
 }
 

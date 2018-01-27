@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B015C61201B91AA001BC0B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */; };
-		1B015C62201B91AA001BC0B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */; };
 		1B015C7D201BA476001BC0B2 /* SongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C7B201BA476001BC0B2 /* SongTests.swift */; };
 		1BAED1AB201B5F2800BEF56C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */; };
 		1BAED1B3201B5F2800BEF56C /* KMP3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BAED1B1201B5F2800BEF56C /* KMP3.xcdatamodeld */; };
@@ -26,7 +24,6 @@
 		1BC202B0201C5FD1007C3E89 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202A7201C5FD1007C3E89 /* Result.swift */; };
 		1BC202B1201C5FD1007C3E89 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202A8201C5FD1007C3E89 /* NetworkService.swift */; };
 		1BC202C0201C5FE3007C3E89 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202B5201C5FE3007C3E89 /* PlayerViewModel.swift */; };
-		1BC202C1201C5FE3007C3E89 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC202B7201C5FE3007C3E89 /* PlayerViewController.xib */; };
 		1BC202C2201C5FE3007C3E89 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202B8201C5FE3007C3E89 /* PlayerViewController.swift */; };
 		1BC202C5201C5FE3007C3E89 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202BE201C5FE3007C3E89 /* FeedCell.swift */; };
 		1BC202C6201C5FE3007C3E89 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC202BF201C5FE3007C3E89 /* FeedCell.xib */; };
@@ -57,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		1B015C7B201BA476001BC0B2 /* SongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTests.swift; sourceTree = "<group>"; };
+		1B8A4995201CD38E00E96682 /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		1BAED1A7201B5F2800BEF56C /* KMP3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KMP3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAED1AA201B5F2800BEF56C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BAED1B2201B5F2800BEF56C /* KMP3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KMP3.xcdatamodel; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 		1BC202A7201C5FD1007C3E89 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		1BC202A8201C5FD1007C3E89 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1BC202B5201C5FE3007C3E89 /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
-		1BC202B7201C5FE3007C3E89 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		1BC202B8201C5FE3007C3E89 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1BC202BE201C5FE3007C3E89 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1BC202BF201C5FE3007C3E89 /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
@@ -249,7 +246,7 @@
 		1BC202B6201C5FE3007C3E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1BC202B7201C5FE3007C3E89 /* PlayerViewController.xib */,
+				1B8A4995201CD38E00E96682 /* PlayerViewController.xib */,
 				1BC202B8201C5FE3007C3E89 /* PlayerViewController.swift */,
 			);
 			path = View;
@@ -409,7 +406,6 @@
 				1BC202CC201CA520007C3E89 /* MiniPlayerViewController.xib in Resources */,
 				1BC202C6201C5FE3007C3E89 /* FeedCell.xib in Resources */,
 				1BAED1B5201B5F2800BEF56C /* Assets.xcassets in Resources */,
-				1BC202C1201C5FE3007C3E89 /* PlayerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +456,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B015C61201B91AA001BC0B2 /* AppDelegate.swift in Sources */,
 				1B015C7D201BA476001BC0B2 /* SongTests.swift in Sources */,
 				1BAED1C3201B5F2800BEF56C /* KMP3Tests.swift in Sources */,
 			);
@@ -470,7 +465,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B015C62201B91AA001BC0B2 /* AppDelegate.swift in Sources */,
 				1BAED1CE201B5F2800BEF56C /* KMP3UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

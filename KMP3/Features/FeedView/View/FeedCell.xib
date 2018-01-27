@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -76,7 +77,7 @@
                                     <constraint firstAttribute="height" constant="55" id="He6-DV-8yF"/>
                                     <constraint firstAttribute="width" constant="55" id="z66-Uf-w57"/>
                                 </constraints>
-                                <state key="normal" image="ic_pause_rounded"/>
+                                <state key="normal" image="ic_play_rounded"/>
                                 <connections>
                                     <action selector="playPauseButtonTapped:" destination="pCu-BY-lep" eventType="touchUpInside" id="g5w-Iz-Voa"/>
                                 </connections>
@@ -167,7 +168,7 @@
         <image name="bg_blur" width="30" height="19"/>
         <image name="ic_arrow_right" width="8" height="13"/>
         <image name="ic_author" width="10" height="12"/>
-        <image name="ic_pause_rounded" width="48" height="48"/>
+        <image name="ic_play_rounded" width="48" height="48"/>
         <image name="ic_tunes" width="14" height="16"/>
     </resources>
 </document>

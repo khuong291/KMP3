@@ -15,12 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let viewModel = FeedViewModel(networkService: NetworkService())
-        let songFeedVC = FeedViewController(viewModel: viewModel)
+        let viewModel = FeedViewModel(networkService: NetworkService(), playerService: PlayerService())
+        let songFeedController = FeedViewController(viewModel: viewModel)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window!.backgroundColor = UIColor.white
-        window!.rootViewController = songFeedVC
+        window!.rootViewController = songFeedController
         window!.makeKeyAndVisible()
         
         return true
