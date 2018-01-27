@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SongFeedViewModel {
+final class FeedViewModel {
     private let networkService: NetworkService
     let songsSignal = Binding<[Song]>(value: [])
     

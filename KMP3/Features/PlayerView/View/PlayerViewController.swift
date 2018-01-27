@@ -11,6 +11,7 @@ import UIKit
 final class PlayerViewController: UIViewController {
     
     @IBOutlet weak var songImageView: UIImageView!
+    @IBOutlet weak var songDurationSlider: UISlider!
     
     let viewModel: PlayerViewModel
     

@@ -28,12 +28,14 @@
 		1BC202C0201C5FE3007C3E89 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202B5201C5FE3007C3E89 /* PlayerViewModel.swift */; };
 		1BC202C1201C5FE3007C3E89 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC202B7201C5FE3007C3E89 /* PlayerViewController.xib */; };
 		1BC202C2201C5FE3007C3E89 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202B8201C5FE3007C3E89 /* PlayerViewController.swift */; };
-		1BC202C3201C5FE3007C3E89 /* SongFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202BB201C5FE3007C3E89 /* SongFeedViewModel.swift */; };
-		1BC202C4201C5FE3007C3E89 /* SongFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202BD201C5FE3007C3E89 /* SongFeedViewController.swift */; };
 		1BC202C5201C5FE3007C3E89 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202BE201C5FE3007C3E89 /* FeedCell.swift */; };
 		1BC202C6201C5FE3007C3E89 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC202BF201C5FE3007C3E89 /* FeedCell.xib */; };
 		1BC202CA201CA4F7007C3E89 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202C9201CA4F7007C3E89 /* MiniPlayerViewController.swift */; };
 		1BC202CC201CA520007C3E89 /* MiniPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BC202CB201CA520007C3E89 /* MiniPlayerViewController.xib */; };
+		1BC202CE201CC4C6007C3E89 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202CD201CC4C6007C3E89 /* Constraint.swift */; };
+		1BC202D0201CCA0B007C3E89 /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202CF201CCA0B007C3E89 /* PlayerService.swift */; };
+		1BC202D3201CCB89007C3E89 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202D2201CCB89007C3E89 /* FeedViewController.swift */; };
+		1BC202D4201CCBF7007C3E89 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202D1201CCB80007C3E89 /* FeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,12 +81,14 @@
 		1BC202B5201C5FE3007C3E89 /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		1BC202B7201C5FE3007C3E89 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		1BC202B8201C5FE3007C3E89 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
-		1BC202BB201C5FE3007C3E89 /* SongFeedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongFeedViewModel.swift; sourceTree = "<group>"; };
-		1BC202BD201C5FE3007C3E89 /* SongFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongFeedViewController.swift; sourceTree = "<group>"; };
 		1BC202BE201C5FE3007C3E89 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1BC202BF201C5FE3007C3E89 /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		1BC202C9201CA4F7007C3E89 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 		1BC202CB201CA520007C3E89 /* MiniPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPlayerViewController.xib; sourceTree = "<group>"; };
+		1BC202CD201CC4C6007C3E89 /* Constraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		1BC202CF201CCA0B007C3E89 /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		1BC202D1201CCB80007C3E89 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		1BC202D2201CCB89007C3E89 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				1BC202A1201C5FD1007C3E89 /* Binding.swift */,
+				1BC202CD201CC4C6007C3E89 /* Constraint.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 			children = (
 				1BC202A7201C5FD1007C3E89 /* Result.swift */,
 				1BC202A8201C5FD1007C3E89 /* NetworkService.swift */,
+				1BC202CF201CCA0B007C3E89 /* PlayerService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -261,7 +267,7 @@
 		1BC202BA201C5FE3007C3E89 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				1BC202BB201C5FE3007C3E89 /* SongFeedViewModel.swift */,
+				1BC202D1201CCB80007C3E89 /* FeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -269,7 +275,7 @@
 		1BC202BC201C5FE3007C3E89 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1BC202BD201C5FE3007C3E89 /* SongFeedViewController.swift */,
+				1BC202D2201CCB89007C3E89 /* FeedViewController.swift */,
 				1BC202BE201C5FE3007C3E89 /* FeedCell.swift */,
 				1BC202BF201C5FE3007C3E89 /* FeedCell.xib */,
 			);
@@ -428,19 +434,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC202D4201CCBF7007C3E89 /* FeedViewModel.swift in Sources */,
+				1BC202CE201CC4C6007C3E89 /* Constraint.swift in Sources */,
 				1BC202B1201C5FD1007C3E89 /* NetworkService.swift in Sources */,
 				1BC202A9201C5FD1007C3E89 /* UIImageView+Extension.swift in Sources */,
 				1BC202AC201C5FD1007C3E89 /* Binding.swift in Sources */,
 				1BAED1B3201B5F2800BEF56C /* KMP3.xcdatamodeld in Sources */,
 				1BC202AF201C5FD1007C3E89 /* Author.swift in Sources */,
-				1BC202C3201C5FE3007C3E89 /* SongFeedViewModel.swift in Sources */,
 				1BC202AB201C5FD1007C3E89 /* UITableView+Extension.swift in Sources */,
+				1BC202D0201CCA0B007C3E89 /* PlayerService.swift in Sources */,
 				1BC202AE201C5FD1007C3E89 /* Song.swift in Sources */,
 				1BC202C2201C5FE3007C3E89 /* PlayerViewController.swift in Sources */,
+				1BC202D3201CCB89007C3E89 /* FeedViewController.swift in Sources */,
 				1BC202B0201C5FD1007C3E89 /* Result.swift in Sources */,
 				1BC202AD201C5FD1007C3E89 /* Picture.swift in Sources */,
 				1BC202C0201C5FE3007C3E89 /* PlayerViewModel.swift in Sources */,
-				1BC202C4201C5FE3007C3E89 /* SongFeedViewController.swift in Sources */,
 				1BC202C5201C5FE3007C3E89 /* FeedCell.swift in Sources */,
 				1BC202AA201C5FD1007C3E89 /* UIView+Extension.swift in Sources */,
 				1BC202CA201CA4F7007C3E89 /* MiniPlayerViewController.swift in Sources */,

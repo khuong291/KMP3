@@ -8,13 +8,15 @@
 import Foundation
 import UIKit
 
-final class SongFeedViewController: UIViewController {
+final class FeedViewController: UIViewController {
     
     fileprivate let tableView = UITableView()
+    fileprivate let refreshControl = UIRefreshControl()
     
-    let viewModel: SongFeedViewModel
+    let viewModel: FeedViewModel
+    let miniPlayerViewController = MiniPlayerViewController()
     
-    init(viewModel: SongFeedViewModel) {
+    init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
@@ -30,6 +32,7 @@ final class SongFeedViewController: UIViewController {
         viewModel.songsSignal.bind { [weak self] songs in
             if let me = self, songs.count > 0 {
                 DispatchQueue.main.async {
+                    me.refreshControl.endRefreshing()
                     me.tableView.reloadData()
                 }
             }
@@ -40,8 +43,11 @@ final class SongFeedViewController: UIViewController {
     }
     
     private func setupUI() {
+        if #available(iOS 11, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        }
+        
         tableView.separatorStyle = .none
-        tableView.frame = view.frame
         
         let nib = UINib(nibName: FeedCell.reuseIdentifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: FeedCell.reuseIdentifier)
@@ -50,10 +56,35 @@ final class SongFeedViewController: UIViewController {
         tableView.delegate = self
         
         view.addSubview(tableView)
+        addChildViewController(miniPlayerViewController)
+        view.addSubview(miniPlayerViewController.view)
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
+        Constraint.on(
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        )
+        
+        Constraint.on(
+            miniPlayerViewController.view.heightAnchor.constraint(equalToConstant: 50),
+            miniPlayerViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
+            miniPlayerViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
+            miniPlayerViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        )
+        
+        miniPlayerViewController.didMove(toParentViewController: self)
+    }
+    
+    @objc func refresh() {
+        viewModel.fetchSongs()
     }
 }
 
-extension SongFeedViewController: UITableViewDataSource {
+extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.songsSignal.value.count
     }
@@ -63,7 +94,7 @@ extension SongFeedViewController: UITableViewDataSource {
     }
 }
 
-extension SongFeedViewController: UITableViewDelegate {
+extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? FeedCell else { return }
         
@@ -77,7 +108,7 @@ extension SongFeedViewController: UITableViewDelegate {
     }
 }
 
-extension SongFeedViewController: FeedCellDelegate {
+extension FeedViewController: FeedCellDelegate {
     func didSelectGoToPlayerButton(_ song: Song) {
         let viewModel = PlayerViewModel(song: song)
         let playerVC = PlayerViewController(viewModel: viewModel)
