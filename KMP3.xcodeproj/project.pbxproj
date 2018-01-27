@@ -55,6 +55,9 @@
 		1BAED1FF201B6E2900BEF56C /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAED1FE201B6E2900BEF56C /* FeedCell.xib */; };
 		1BAED200201B6E2900BEF56C /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAED1FE201B6E2900BEF56C /* FeedCell.xib */; };
 		1BAED201201B6E2900BEF56C /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAED1FE201B6E2900BEF56C /* FeedCell.xib */; };
+		1BAFB213201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */; };
+		1BAFB214201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */; };
+		1BAFB215201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +104,7 @@
 		1BAED1DE201B609B00BEF56C /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		1BAED1FA201B6DF300BEF56C /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1BAED1FE201B6E2900BEF56C /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 			children = (
 				1B015C41201B7EBC001BC0B2 /* UIView+Extension.swift */,
 				1B015C45201B7F69001BC0B2 /* UITableView+Extension.swift */,
+				1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAFB213201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */,
 				1B015C70201BA2B9001BC0B2 /* Song.swift in Sources */,
 				1B015C83201BA637001BC0B2 /* SongFeedViewController.swift in Sources */,
 				1B015C5A201B89CC001BC0B2 /* MainNavigationController.swift in Sources */,
@@ -422,6 +428,7 @@
 				1B015C75201BA2E7001BC0B2 /* Picture.swift in Sources */,
 				1B015C85201BA72D001BC0B2 /* SongFeedViewModel.swift in Sources */,
 				1B015C5B201B89CC001BC0B2 /* MainNavigationController.swift in Sources */,
+				1BAFB214201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */,
 				1B015C47201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */,
 				1B015C43201B7EBC001BC0B2 /* UIView+Extension.swift in Sources */,
 				1BAED1E0201B609B00BEF56C /* Author.swift in Sources */,
@@ -434,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAFB215201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */,
 				1B015C72201BA2B9001BC0B2 /* Song.swift in Sources */,
 				1B015C82201BA637001BC0B2 /* SongFeedViewController.swift in Sources */,
 				1B015C62201B91AA001BC0B2 /* AppDelegate.swift in Sources */,

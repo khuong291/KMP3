@@ -27,8 +27,12 @@ final class SongFeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.songsSignal.bind { songs in
-            print(songs)
+        viewModel.songsSignal.bind { [weak self] songs in
+            if let me = self, songs.count > 0 {
+                DispatchQueue.main.async {
+                    me.tableView.reloadData()
+                }
+            }
         }
         
         setupUI()
@@ -37,8 +41,38 @@ final class SongFeedViewController: UIViewController {
     
     private func setupUI() {
         tableView.separatorStyle = .none
+        tableView.frame = view.frame
+        
         let nib = UINib(nibName: FeedCell.reuseIdentifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: FeedCell.reuseIdentifier)
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         view.addSubview(tableView)
     }
 }
+
+extension SongFeedViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.songsSignal.value.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(FeedCell.self, forIndexPath: indexPath)
+    }
+}
+
+extension SongFeedViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? FeedCell else { return }
+        
+        let song = viewModel.songsSignal.value[indexPath.row]
+        cell.song = song
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.width + 64
+    }
+}
+
