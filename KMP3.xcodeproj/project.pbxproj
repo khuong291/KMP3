@@ -64,6 +64,9 @@
 		1BAFB21C201C4639001B0B2D /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */; };
 		1BAFB21D201C4639001B0B2D /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */; };
 		1BAFB21E201C4639001B0B2D /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */; };
+		1BAFB220201C5918001B0B2D /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB21F201C5918001B0B2D /* PlayerViewModel.swift */; };
+		1BAFB221201C5918001B0B2D /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB21F201C5918001B0B2D /* PlayerViewModel.swift */; };
+		1BAFB222201C5918001B0B2D /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAFB21F201C5918001B0B2D /* PlayerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,7 @@
 		1BAFB212201C3A06001B0B2D /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		1BAFB217201C4507001B0B2D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		1BAFB21B201C4639001B0B2D /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		1BAFB21F201C5918001B0B2D /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				1B015C7F201BA62C001BC0B2 /* SongFeedViewModel.swift */,
+				1BAFB21F201C5918001B0B2D /* PlayerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				1BAED1FB201B6DF300BEF56C /* FeedCell.swift in Sources */,
 				1B015C46201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */,
 				1B015C64201B9F23001BC0B2 /* NetworkService.swift in Sources */,
+				1BAFB220201C5918001B0B2D /* PlayerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +455,7 @@
 				1B015C7D201BA476001BC0B2 /* SongTests.swift in Sources */,
 				1B015C75201BA2E7001BC0B2 /* Picture.swift in Sources */,
 				1B015C85201BA72D001BC0B2 /* SongFeedViewModel.swift in Sources */,
+				1BAFB221201C5918001B0B2D /* PlayerViewModel.swift in Sources */,
 				1B015C5B201B89CC001BC0B2 /* MainNavigationController.swift in Sources */,
 				1BAFB214201C3A06001B0B2D /* UIImageView+Extension.swift in Sources */,
 				1B015C47201B7F69001BC0B2 /* UITableView+Extension.swift in Sources */,
@@ -480,6 +487,7 @@
 				1BAED1E1201B609B00BEF56C /* Author.swift in Sources */,
 				1BAED1CE201B5F2800BEF56C /* KMP3UITests.swift in Sources */,
 				1B015C66201B9F23001BC0B2 /* NetworkService.swift in Sources */,
+				1BAFB222201C5918001B0B2D /* PlayerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

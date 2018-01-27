@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="KMP3" customModuleProvider="target">
             <connections>
+                <outlet property="songImageView" destination="mKe-GJ-Wej" id="Ver-87-4IE"/>
                 <outlet property="view" destination="j3r-j7-5RE" id="DFO-Iv-JoI"/>
             </connections>
         </placeholder>
@@ -24,7 +25,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXU-3n-Apc">
-                    <rect key="frame" x="0.0" y="20" width="375" height="385.5"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="387"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Hits Singapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knv-nP-Zdh">
                             <rect key="frame" x="114.5" y="14.5" width="145" height="21"/>
@@ -32,8 +33,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-GJ-Wej">
-                            <rect key="frame" x="52.5" y="95" width="270" height="270.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mKe-GJ-Wej">
+                            <rect key="frame" x="52" y="95.5" width="271" height="271.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="mKe-GJ-Wej" secondAttribute="height" id="U1g-8l-e1R"/>
                             </constraints>
@@ -63,51 +64,50 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Kg-ii-vAa">
-                    <rect key="frame" x="0.0" y="405.5" width="375" height="261.5"/>
+                    <rect key="frame" x="0.0" y="407" width="375" height="260"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvJ-SM-2Cb">
-                            <rect key="frame" x="134.5" y="20" width="106" height="24"/>
+                            <rect key="frame" x="134.5" y="18.5" width="106" height="24"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3D-vY-s4j">
-                            <rect key="frame" x="140" y="50" width="95.5" height="19.5"/>
+                            <rect key="frame" x="140" y="48.5" width="95.5" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="0.15686274509803921" green="0.17254901960784313" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHc-GE-Yrd" userLabel="PrevButton">
-                            <rect key="frame" x="98" y="184.5" width="16" height="22"/>
+                            <rect key="frame" x="98" y="183" width="16" height="22"/>
                             <state key="normal" image="ic_player_prev"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSh-AW-gSe" userLabel="PlayButton">
-                            <rect key="frame" x="174" y="179.5" width="27" height="32"/>
+                            <rect key="frame" x="174" y="178" width="27" height="32"/>
                             <state key="normal" image="ic_player_play"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVw-Tr-Ko9" userLabel="NextButton">
-                            <rect key="frame" x="261" y="184.5" width="16" height="22"/>
+                            <rect key="frame" x="261" y="183" width="16" height="22"/>
                             <state key="normal" image="ic_player_next"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWe-wt-BCs">
-                            <rect key="frame" x="25" y="88.5" width="30.5" height="17"/>
+                            <rect key="frame" x="25" y="87" width="30.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.15686274509803921" green="0.17254901960784313" blue="0.20000000000000001" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrs-nO-2FQ">
-                            <rect key="frame" x="319.5" y="88.5" width="30.5" height="17"/>
+                            <rect key="frame" x="319.5" y="87" width="30.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.15686274509803921" green="0.17254901960784313" blue="0.20000000000000001" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-n5-KcX">
-                            <rect key="frame" x="23" y="109.5" width="329" height="31"/>
+                            <rect key="frame" x="23" y="108" width="329" height="31"/>
                         </slider>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="YvJ-SM-2Cb" firstAttribute="top" secondItem="7Kg-ii-vAa" secondAttribute="top" constant="20" id="1X6-pm-Sea"/>
                         <constraint firstItem="Gko-n5-KcX" firstAttribute="leading" secondItem="7Kg-ii-vAa" secondAttribute="leading" constant="25" id="1y9-n0-mds"/>
                         <constraint firstItem="NSh-AW-gSe" firstAttribute="top" secondItem="Gko-n5-KcX" secondAttribute="bottom" constant="40" id="3eU-XC-QTS"/>
                         <constraint firstItem="TVw-Tr-Ko9" firstAttribute="leading" secondItem="NSh-AW-gSe" secondAttribute="trailing" constant="60" id="M3f-7E-kye"/>
@@ -118,6 +118,7 @@
                         <constraint firstItem="Gko-n5-KcX" firstAttribute="centerX" secondItem="7Kg-ii-vAa" secondAttribute="centerX" id="UEM-uv-Hib"/>
                         <constraint firstItem="Hrs-nO-2FQ" firstAttribute="trailing" secondItem="Gko-n5-KcX" secondAttribute="trailing" id="W2l-6p-o0R"/>
                         <constraint firstItem="YvJ-SM-2Cb" firstAttribute="centerX" secondItem="7Kg-ii-vAa" secondAttribute="centerX" id="bjf-aW-fYP"/>
+                        <constraint firstAttribute="height" constant="260" id="cnN-XX-GM8"/>
                         <constraint firstItem="NWe-wt-BCs" firstAttribute="leading" secondItem="Gko-n5-KcX" secondAttribute="leading" id="f7Q-fX-q43"/>
                         <constraint firstItem="TVw-Tr-Ko9" firstAttribute="centerY" secondItem="NSh-AW-gSe" secondAttribute="centerY" id="nQn-d3-4FV"/>
                         <constraint firstAttribute="bottom" secondItem="NSh-AW-gSe" secondAttribute="bottom" constant="50" id="qRx-Ej-6iu"/>

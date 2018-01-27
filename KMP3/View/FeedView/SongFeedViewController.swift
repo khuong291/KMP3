@@ -79,7 +79,8 @@ extension SongFeedViewController: UITableViewDelegate {
 
 extension SongFeedViewController: FeedCellDelegate {
     func didSelectGoToPlayerButton(_ song: Song) {
-        let playerVC = PlayerViewController()
+        let viewModel = PlayerViewModel(song: song)
+        let playerVC = PlayerViewController(viewModel: viewModel)
         present(playerVC, animated: true, completion: nil)
     }
     

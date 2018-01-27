@@ -10,8 +10,28 @@ import UIKit
 
 final class PlayerViewController: UIViewController {
     
+    @IBOutlet weak var songImageView: UIImageView!
+    
+    let viewModel: PlayerViewModel
+    
+    init(viewModel: PlayerViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: "PlayerViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    private func setupUI() {
+        songImageView.loadImage(from: viewModel.song.picture.large.absoluteString)
     }
     
     @IBAction func minimizeButtonTapped(_ sender: UIButton) {
