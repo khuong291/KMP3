@@ -8,12 +8,27 @@
 import Foundation
 import UIKit
 
+protocol MiniPlayerViewControllerDelegate: class {
+    func didSelectPlayPauseButton(_ viewController: MiniPlayerViewController, song: Song)
+}
+
 final class MiniPlayerViewController: UIViewController {
     
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
+    
+    var song: Song? {
+        didSet {
+            guard let song = song else { return }
+            
+            songNameLabel.text = song.name
+            authorNameLabel.text = song.author.name
+        }
+    }
+    
+    weak var delegate: MiniPlayerViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +40,9 @@ final class MiniPlayerViewController: UIViewController {
     }
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
+        guard let song = song else { return }
         
+        delegate?.didSelectPlayPauseButton(self, song: song)
     }
     
     @IBAction func settingButtonTapped(_ sender: UIButton) {

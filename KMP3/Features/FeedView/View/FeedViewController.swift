@@ -62,6 +62,7 @@ final class FeedViewController: UIViewController {
         addChildViewController(miniPlayerViewController)
         view.addSubview(miniPlayerViewController.view)
         miniPlayerViewController.view.isHidden = true
+        miniPlayerViewController.delegate = self
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
@@ -114,21 +115,18 @@ extension FeedViewController: UITableViewDelegate {
 }
 
 extension FeedViewController: FeedCellDelegate {
-    func didSelectGoToPlayerButton(_ song: Song) {
+    func didSelectGoToPlayerButton(_ cell: FeedCell, song: Song) {
         let viewModel = PlayerViewModel(song: song)
         let playerVC = PlayerViewController(viewModel: viewModel)
         present(playerVC, animated: true, completion: nil)
     }
     
-    func didSelectPlayPauseButton(_ song: Song, at index: Int) {
+    func didSelectPlayPauseButton(_ cell: FeedCell, song: Song, at index: Int) {
         // Pause if playing
         if previousPlayingIndex == index, viewModel.playerService.isPlaying() {
             viewModel.playerService.pause()
             
-            let indexPath = IndexPath(row: index, section: 0)
-            if let cell = tableView.cellForRow(at: indexPath) as? FeedCell {
-                cell.switchPlayPauseButtonImage(isPlaying: false)
-            }
+            cell.switchPlayPauseButtonImage(isPlaying: false)
             
             miniPlayerViewController.updatePlayPauseButtonImage(isPlaying: false)
             return
@@ -144,28 +142,37 @@ extension FeedViewController: FeedCellDelegate {
             }
     
             // Update isPlaying state on the cell selected
-            me.viewModel.songsSignal.value[index].isPlaying = true
+            let selectedSong = me.viewModel.songsSignal.value[index]
+            selectedSong.isPlaying = true
             
             DispatchQueue.main.async {
                 let preIndexPath = IndexPath(row: me.previousPlayingIndex, section: 0)
                 // Update playing status on previous playing cell
-                if let cell = me.tableView.cellForRow(at: preIndexPath) as? FeedCell {
-                    cell.switchPlayPauseButtonImage(isPlaying: false)
+                if let preCell = me.tableView.cellForRow(at: preIndexPath) as? FeedCell {
+                    preCell.switchPlayPauseButtonImage(isPlaying: false)
                 }
-                
-                let indexPath = IndexPath(row: index, section: 0)
                 
                 // Update playing status on playing cell
-                if let cell = me.tableView.cellForRow(at: indexPath) as? FeedCell {
-                    cell.switchPlayPauseButtonImage(isPlaying: true)
-                }
+                cell.switchPlayPauseButtonImage(isPlaying: true)
                 
+                // Update miniPlayerViewController properties
                 me.miniPlayerViewController.view.isHidden = false
                 me.miniPlayerViewController.updatePlayPauseButtonImage(isPlaying: true)
+                me.miniPlayerViewController.song = selectedSong
                 
                 // Update previousPlayingIndex
                 me.previousPlayingIndex = index
             }
+        }
+    }
+}
+
+extension FeedViewController: MiniPlayerViewControllerDelegate {
+    func didSelectPlayPauseButton(_ viewController: MiniPlayerViewController, song: Song) {
+        let indexPath = IndexPath(row: previousPlayingIndex, section: 0)
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? FeedCell {
+            didSelectPlayPauseButton(cell, song: song, at: previousPlayingIndex)
         }
     }
 }

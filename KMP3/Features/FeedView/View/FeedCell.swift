@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 protocol FeedCellDelegate: class {
-    func didSelectGoToPlayerButton(_ song: Song)
-    func didSelectPlayPauseButton(_ song: Song, at index: Int)
+    func didSelectGoToPlayerButton(_ cell: FeedCell, song: Song)
+    func didSelectPlayPauseButton(_ cell: FeedCell, song: Song, at index: Int)
 }
 
 final class FeedCell: UITableViewCell {
@@ -60,11 +60,11 @@ final class FeedCell: UITableViewCell {
     
     @IBAction func goToPlayerButtonTapped(_ sender: UIButton) {
         guard let song = song else { return }
-        delegate?.didSelectGoToPlayerButton(song)
+        delegate?.didSelectGoToPlayerButton(self, song: song)
     }
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
         guard let song = song else { return }
-        delegate?.didSelectPlayPauseButton(song, at: row)
+        delegate?.didSelectPlayPauseButton(self, song: song, at: row)
     }
 }
