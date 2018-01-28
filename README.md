@@ -1,51 +1,34 @@
-### CoderSchool Week 3 Assigntment
-# TwitterK
+### Bandlab test assignment
+# KMP3
 
-This is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
+This is a simple player app for showing list of songs and playing them.
 
-Time spent: <29 hours>
+Data is fetched from [this](https://gist.githubusercontent.com/anonymous/fec47e2418986b7bdb630a1772232f7d/raw/5e3e6f4dc0b94906dca8de415c585b01069af3f7/57eb7cc5e4b0bcac9f7581c8.json).
+
+Time spent: <13 hours>
 
 ### Features
 
 #### Required
 
-- [x] User can sign in using OAuth login flow
+- [x] Do not use 3rd party libraries, do not copy/paste code from 3rd party libraries.
 
-- [x] User can view last 20 tweets from their home timeline
+- [x] Use git for local development.
 
-- [x] The current signed in user will be persisted across restarts
+- [x] Use Swift 4
 
-- [x] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp. In other words, design the custom cell with the proper Auto Layout settings. You will also need to augment the model classes.
-
-- [x] User can pull to refresh
-
-- [x] User can compose a new tweet by tapping on a compose button.
-
-- [x] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
-
-- [x] User can retweet, favorite, and reply to the tweet directly from the timeline feed
+- [x] Make sure the app has enough unit tests coverage.
 
 
-#### Optional
+#### Bonus tasks
 
-- [x] When composing, you should have a countdown in the upper right for the tweet limit.
+- [x] Create a mechanism to cache streaming audio files. If User wants to a play a cached song, we should played a locally cached file instead of doing remote streaming.
 
-- [x] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
-
-- [x] Retweeting and favoriting should increment the retweet and favorite count.
-
-- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-
-- [x] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
-
-- [x] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
-
-### Additional Features
-- [x] Implement photo view
+- [x] Make the app work in offline mode.
 
 
 ### Walkthrough
 
-![](TwitterK.gif)
+![](KMP3.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
