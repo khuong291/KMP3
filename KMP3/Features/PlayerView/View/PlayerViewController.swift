@@ -107,6 +107,7 @@ final class PlayerViewController: UIViewController {
             timer = nil
         }
         
+        // remove the binding closure in viewDidLoad above to avoid memory leak
         viewModel.playerService.currentSongSignal.remove()
         dismiss(animated: true, completion: nil)
     }
