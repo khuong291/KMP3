@@ -92,6 +92,11 @@ final class PlayerViewController: UIViewController {
     }
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
+        guard let song = viewModel.songSignal.value else {
+            return
+        }
         
+        viewModel.playerService.play(song: song)
+        setupPlayPauseButtonImage()
     }
 }
