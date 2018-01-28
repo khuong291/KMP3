@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1B015C7D201BA476001BC0B2 /* SongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B015C7B201BA476001BC0B2 /* SongTests.swift */; };
+		1B26C285201DDA8A00EB86DA /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202A4201C5FD1007C3E89 /* Song.swift */; };
+		1B26C286201DDA8A00EB86DA /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202A4201C5FD1007C3E89 /* Song.swift */; };
+		1B26C287201DDA9A00EB86DA /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202A5201C5FD1007C3E89 /* Author.swift */; };
+		1B26C288201DDA9B00EB86DA /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202A5201C5FD1007C3E89 /* Author.swift */; };
+		1B26C289201DDA9D00EB86DA /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202A3201C5FD1007C3E89 /* Picture.swift */; };
+		1B26C28A201DDA9E00EB86DA /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202A3201C5FD1007C3E89 /* Picture.swift */; };
 		1B8A4997201CD5A800E96682 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A4996201CD5A800E96682 /* CacheService.swift */; };
 		1B8A4999201CE8A500E96682 /* ImageFetchingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A4998201CE8A500E96682 /* ImageFetchingService.swift */; };
 		1B8A499B201CEA4F00E96682 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A499A201CEA4F00E96682 /* UIImageView+Extension.swift */; };
@@ -474,7 +480,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B26C285201DDA8A00EB86DA /* Song.swift in Sources */,
+				1B26C289201DDA9D00EB86DA /* Picture.swift in Sources */,
 				1B015C7D201BA476001BC0B2 /* SongTests.swift in Sources */,
+				1B26C287201DDA9A00EB86DA /* Author.swift in Sources */,
 				1BAED1C3201B5F2800BEF56C /* KMP3Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +492,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B26C28A201DDA9E00EB86DA /* Picture.swift in Sources */,
+				1B26C288201DDA9B00EB86DA /* Author.swift in Sources */,
+				1B26C286201DDA8A00EB86DA /* Song.swift in Sources */,
 				1BAED1CE201B5F2800BEF56C /* KMP3UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
