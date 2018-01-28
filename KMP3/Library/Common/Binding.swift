@@ -15,14 +15,21 @@ class Binding<T> {
         }
     }
     
+    /// Use array for multiple binding in multiple view
     private var listeners: [((T) -> Void)?] = []
     
     init(value: T) {
         self.value = value
     }
     
+    /// Use for callback data when value is set
     func bind(_ closure: @escaping (T) -> Void) {
         closure(value)
         listeners.append(closure)
+    }
+    
+    /// Remove last closure to avoid memory leak
+    func remove() {
+        listeners.removeLast()
     }
 }

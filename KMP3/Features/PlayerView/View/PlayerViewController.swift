@@ -42,6 +42,7 @@ final class PlayerViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateValue), userInfo: nil, repeats: true)
     }
     
+    /// Bind current song to UI
     private func bind() {
         viewModel.playerService.currentSongSignal.bind { (song) in
             guard let _ = song else {
@@ -106,6 +107,7 @@ final class PlayerViewController: UIViewController {
             timer = nil
         }
         
+        viewModel.playerService.currentSongSignal.remove()
         dismiss(animated: true, completion: nil)
     }
     
