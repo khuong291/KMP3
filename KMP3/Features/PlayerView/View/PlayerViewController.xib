@@ -88,6 +88,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHc-GE-Yrd" userLabel="PrevButton">
                             <rect key="frame" x="98.5" y="188" width="16" height="22"/>
                             <state key="normal" image="ic_player_prev"/>
+                            <connections>
+                                <action selector="playPreviousButtonTapped:" destination="-1" eventType="touchUpInside" id="wTh-aP-HJK"/>
+                            </connections>
                         </button>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSh-AW-gSe" userLabel="PlayButton">
                             <rect key="frame" x="174.5" y="184" width="27" height="26"/>
@@ -99,6 +102,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVw-Tr-Ko9" userLabel="NextButton">
                             <rect key="frame" x="261.5" y="188" width="16" height="22"/>
                             <state key="normal" image="ic_player_next"/>
+                            <connections>
+                                <action selector="playNextButtonTapped:" destination="-1" eventType="touchUpInside" id="AUz-tj-Bwd"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWe-wt-BCs">
                             <rect key="frame" x="25" y="97" width="30.5" height="17"/>

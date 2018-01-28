@@ -153,7 +153,7 @@ extension FeedViewController: UITableViewDelegate {
 extension FeedViewController: FeedCellDelegate {
     
     fileprivate func presentPlayerController(song: Song, playerService: PlayerService) {
-        let viewModel = PlayerViewModel(song: song, playerService: playerService)
+        let viewModel = PlayerViewModel(songs: self.viewModel.songsSignal.value, playerService: playerService)
         let playerVC = PlayerViewController(viewModel: viewModel)
         present(playerVC, animated: true, completion: nil)
     }

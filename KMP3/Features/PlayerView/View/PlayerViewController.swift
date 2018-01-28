@@ -45,7 +45,7 @@ final class PlayerViewController: UIViewController {
     }
     
     private func setupUI() {
-        guard let song = viewModel.songSignal.value else {
+        guard let song = viewModel.playerService.currentSongSignal.value else {
             return
         }
         
@@ -92,11 +92,19 @@ final class PlayerViewController: UIViewController {
     }
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
-        guard let song = viewModel.songSignal.value else {
+        guard let song = viewModel.playerService.currentSongSignal.value else {
             return
         }
         
         viewModel.playerService.play(song: song)
         setupPlayPauseButtonImage()
+    }
+    
+    @IBAction func playPreviousButtonTapped(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func playNextButtonTapped(_ sender: UIButton) {
+        
     }
 }

@@ -10,10 +10,10 @@ import Foundation
 final class PlayerViewModel {
     
     let playerService: PlayerService
-    let songSignal = Binding<Song?>(value: nil)
+    let songsSignal = Binding<[Song]>(value: [])
     
-    init(song: Song, playerService: PlayerService) {
-        self.songSignal.value = song
+    init(songs: [Song], playerService: PlayerService) {
+        self.songsSignal.value = songs
         self.playerService = playerService
     }
 }
