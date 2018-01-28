@@ -10,7 +10,7 @@ import UIKit
 
 protocol FeedCellDelegate: class {
     func didSelectGoToPlayerButton(_ cell: FeedCell, song: Song)
-    func didSelectPlayPauseButton(_ cell: FeedCell, song: Song, at index: Int)
+    func didSelectPlayPauseButton(_ cell: FeedCell, song: Song)
 }
 
 final class FeedCell: UITableViewCell {
@@ -25,20 +25,17 @@ final class FeedCell: UITableViewCell {
     
     var song: Song? {
         didSet {
-            guard let song = song else { return }
+            guard let song = song else {
+                return
+            }
             
             songNameLabel.text = song.name
             authorNameLabel.text = song.author.name
             authorNameLabel2.text = song.author.name
             songImageView.loadImage(url: song.picture.large)
             authorImageView.loadImage(url: song.author.picture.small)
-            
-            switchPlayPauseButtonImage(isPlaying: song.isPlaying)
-            durationLabel.isHidden = !song.isPlaying
         }
     }
-    
-    var row = 0
     
     weak var delegate: FeedCellDelegate?
     
@@ -65,12 +62,18 @@ final class FeedCell: UITableViewCell {
     }
     
     @IBAction func goToPlayerButtonTapped(_ sender: UIButton) {
-        guard let song = song else { return }
+        guard let song = song else {
+            return
+        }
+        
         delegate?.didSelectGoToPlayerButton(self, song: song)
     }
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
-        guard let song = song else { return }
-        delegate?.didSelectPlayPauseButton(self, song: song, at: row)
+        guard let song = song else {
+            return
+        }
+        
+        delegate?.didSelectPlayPauseButton(self, song: song)
     }
 }

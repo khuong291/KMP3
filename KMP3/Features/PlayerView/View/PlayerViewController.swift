@@ -45,7 +45,9 @@ final class PlayerViewController: UIViewController {
     }
     
     private func setupUI() {
-        guard let song = viewModel.songSignal.value else { return }
+        guard let song = viewModel.songSignal.value else {
+            return
+        }
         
         songImageView.loadImage(url: song.picture.large)
         songNameLabel.text = song.name
@@ -63,13 +65,17 @@ final class PlayerViewController: UIViewController {
     }
     
     private func calculateDuration() {
-        guard let player = viewModel.playerService.player else { return }
+        guard let player = viewModel.playerService.player else {
+            return
+        }
       
         durationLabel.text = player.duration.toTime()
     }
     
     private func updateTime() {
-        guard let player = viewModel.playerService.player, player.isPlaying else { return }
+        guard let player = viewModel.playerService.player, player.isPlaying else {
+            return
+        }
         
         runningTimeLabel.text = player.currentTime.toTime()
         

@@ -12,33 +12,64 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
     let cacheService: CacheService
     var player: AVAudioPlayer!
     
+    // Signal for the current playing song. Initially there is no playing song yet
+    let currentSongSignal = Binding<Song?>(value: nil)
+    
     init(cacheService: CacheService) {
         self.cacheService = cacheService
     }
     
+    
+    // Check if current song is playing
     func isPlaying() -> Bool {
-        guard player != nil else { return false }
+        guard currentSongSignal.value != nil else {
+            return false
+        }
+        
+        guard player != nil else {
+            return false
+        }
             
         return player.isPlaying
     }
     
-    func play(from url: URL, completion: @escaping (Bool) -> Void) {
-        fetch(url: url, completion: { data in
-            if let data = data {
-                self.player = try! AVAudioPlayer(data: data)
-                self.player.delegate = self
-                self.player.play()
-                completion(true)
-            } else {
-                completion(false)
+    // Play a song
+    func play(song: Song) {
+        guard let currentSong = currentSongSignal.value, currentSong.id == song.id else {
+            fetchAndPlayAsNew(song: song)
+            return
+        }
+        
+        if player.isPlaying {
+            player.pause()
+        } else {
+            player.play()
+        }
+        
+        currentSongSignal.value = currentSongSignal.value
+    }
+
+    private func fetchAndPlayAsNew(song: Song) {
+        fetch(url: song.audioLink, completion: { data in
+            guard let data = data else {
+                return
             }
+            
+            self.player = try! AVAudioPlayer(data: data)
+            self.player.delegate = self
+            self.player.play()
+            
+            // Signal that the song is in current
+            self.currentSongSignal.value = song
         })
     }
     
+    // Pause current playing song
     func pause() {
-        guard player != nil else { return }
-        
-        player.pause()
+        if isPlaying() {
+            player.pause()
+            currentSongSignal.value = currentSongSignal.value
+        }
     }
     
     /// fetch song from memory, if there is no data then fetch song from disk, if there is no data then download song from network

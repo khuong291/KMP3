@@ -22,7 +22,9 @@ final class MiniPlayerViewController: UIViewController {
     
     var song: Song? {
         didSet {
-            guard let song = song else { return }
+            guard let song = song else {
+                return
+            }
             
             songNameLabel.text = song.name
             authorNameLabel.text = song.author.name
@@ -41,13 +43,17 @@ final class MiniPlayerViewController: UIViewController {
     }
     
     @IBAction func gotoPlayer(_ sender: UIButton) {
-        guard let song = song else { return }
-        
+        guard let song = song else {
+            return
+        }
+
         delegate?.didSelectGoToPlayerButton(self, song: song)
     }
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
-        guard let song = song else { return }
+        guard let song = song else {
+            return
+        }
         
         delegate?.didSelectPlayPauseButton(self, song: song)
     }
