@@ -97,7 +97,7 @@ final class FeedViewController: UIViewController {
         viewModel.fetchSongs()
     }
     
-    // handle synchronizing playing status in each cell and mini player view
+    /// Handle synchronizing playing status in each cell and mini player view
     private func handle(currentSong: Song?) {
         guard let visibleIndexPaths = tableView.indexPathsForVisibleRows else {
             return
@@ -114,7 +114,7 @@ final class FeedViewController: UIViewController {
         miniPlayerViewController.updatePlayPauseButtonImage(isPlaying: viewModel.playerService.isPlaying())
     }
     
-    // configure cell playPauseButton image depend on the song stored in cell and current song
+    /// Configure cell playPauseButton image depend on the song stored in cell and current song
     fileprivate func configurePlayingStatus(for cell: FeedCell, song: Song) {
         guard let currentSong = viewModel.playerService.currentSongSignal.value else {
             cell.switchPlayPauseButtonImage(isPlaying: false)

@@ -12,7 +12,7 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
     let cacheService: CacheService
     var player: AVAudioPlayer!
     
-    // Signal for the current playing song. Initially there is no playing song yet
+    /// Signal for the current playing song. Initially there is no playing song yet
     let currentSongSignal = Binding<Song?>(value: nil)
     
     init(cacheService: CacheService) {
@@ -20,7 +20,7 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
     }
     
     
-    // Check if current song is playing
+    /// Check if current song is playing
     func isPlaying() -> Bool {
         guard currentSongSignal.value != nil else {
             return false
@@ -33,7 +33,7 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
         return player.isPlaying
     }
     
-    // Play a song
+    /// Play a song
     func play(song: Song, forcePlayAgain: Bool = false) {
         guard let currentSong = currentSongSignal.value, currentSong.id == song.id else {
             fetchAndPlayAsNew(song: song)
@@ -53,7 +53,7 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
         currentSongSignal.value = currentSongSignal.value
     }
 
-    // Fetch audio file then assign currentSongSignal to a new value
+    /// Fetch audio file then assign currentSongSignal to a new value
     private func fetchAndPlayAsNew(song: Song) {
         fetch(url: song.audioLink, completion: { data in
             guard let data = data else {
@@ -69,7 +69,7 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
         })
     }
     
-    // Pause current playing song
+    /// Pause current playing song
     func pause() {
         if isPlaying() {
             player.pause()

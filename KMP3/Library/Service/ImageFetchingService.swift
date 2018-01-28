@@ -32,7 +32,7 @@ final class ImageFetchingService {
                     completion(image)
                 }
             } else {
-                // if not, download image from url
+                // If not, download image from url
                 self?.task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                     if error != nil {
                         completion(nil)

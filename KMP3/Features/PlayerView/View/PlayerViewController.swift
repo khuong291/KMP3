@@ -72,14 +72,14 @@ final class PlayerViewController: UIViewController {
         calculateDuration()
     }
     
-    // Switch between pause and play image depend on player is playing
+    /// Switch between pause and play image depend on player is playing
     private func setupPlayPauseButtonImage() {
         let isPlaying = viewModel.playerService.isPlaying()
         let image = isPlaying ? #imageLiteral(resourceName: "ic_pause") : #imageLiteral(resourceName: "ic_player_play")
         playPauseButton.setImage(image, for: .normal)
     }
     
-    // Calculate the duration of current song
+    /// Calculate the duration of current song
     private func calculateDuration() {
         guard let player = viewModel.playerService.player else {
             return
@@ -88,7 +88,7 @@ final class PlayerViewController: UIViewController {
         durationLabel.text = player.duration.toTime()
     }
     
-    // Update running time
+    /// Update running time
     private func updateTime() {
         guard let player = viewModel.playerService.player, player.isPlaying else {
             return
@@ -99,7 +99,7 @@ final class PlayerViewController: UIViewController {
         songDurationSlider.value = Float(player.currentTime * 1000.0 / player.duration)
     }
     
-    // Dismiss this controller and remove timer
+    /// Dismiss this controller and remove timer
     @IBAction func minimizeButtonTapped(_ sender: UIButton) {
         if timer != nil {
             timer.invalidate()
@@ -109,7 +109,7 @@ final class PlayerViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    // Play or pause current song and update the button image
+    /// Play or pause current song and update the button image
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
         guard let song = viewModel.playerService.currentSongSignal.value else {
             return
@@ -119,7 +119,7 @@ final class PlayerViewController: UIViewController {
         setupPlayPauseButtonImage()
     }
     
-    // Play previous song
+    /// Play previous song
     @IBAction func playPreviousButtonTapped(_ sender: UIButton) {
         guard let currentSong = viewModel.playerService.currentSongSignal.value else {
             return
@@ -142,7 +142,7 @@ final class PlayerViewController: UIViewController {
         viewModel.playerService.play(song: previousSong)
     }
     
-    // Play next song
+    /// Play next song
     @IBAction func playNextButtonTapped(_ sender: UIButton) {
         guard let currentSong = viewModel.playerService.currentSongSignal.value else {
             return
@@ -155,5 +155,15 @@ final class PlayerViewController: UIViewController {
         let nextSong = songs[nextIndex]
         
         viewModel.playerService.play(song: nextSong)
+    }
+    
+    /// Change current time of player
+    @IBAction func changeTimeSliderAction(_ sender: UISlider) {
+        guard let player = viewModel.playerService.player, sender.maximumValue > 0 else {
+            return
+        }
+        
+        let time = (Double(sender.value / sender.maximumValue) * player.duration)
+        viewModel.playerService.player.currentTime = time
     }
 }

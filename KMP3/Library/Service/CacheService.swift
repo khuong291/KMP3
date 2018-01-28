@@ -34,15 +34,15 @@ final class CacheService {
     
     func loadData(url: URL, completion: @escaping (Data?) -> Void) {
         DispatchQueue.global().async {
-            /// If object is in memory
+            // If object is in memory
             if let data = self.memory.object(forKey: url.absoluteString as NSString) {
                 completion(data as Data)
                 return
             }
             
-            /// If object is in disk
+            // If object is in disk
             if let data = try? Data(contentsOf: self.filePath(url: url)) {
-                /// Set back to memory
+                // Set back to memory
                 self.memory.setObject(data as NSData, forKey: url.absoluteString as NSString)
                 completion(data)
                 return
