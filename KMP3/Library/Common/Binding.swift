@@ -9,11 +9,13 @@
 class Binding<T> {
     var value: T {
         didSet {
-            listener?(value)
+            listeners.forEach {
+                $0?(value)
+            }
         }
     }
     
-    private var listener: ((T) -> Void)?
+    private var listeners: [((T) -> Void)?] = []
     
     init(value: T) {
         self.value = value
@@ -21,6 +23,6 @@ class Binding<T> {
     
     func bind(_ closure: @escaping (T) -> Void) {
         closure(value)
-        listener = closure
+        listeners.append(closure)
     }
 }
