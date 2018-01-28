@@ -34,6 +34,7 @@ final class FeedCell: UITableViewCell {
             authorImageView.loadImage(url: song.author.picture.small)
             
             switchPlayPauseButtonImage(isPlaying: song.isPlaying)
+            durationLabel.isHidden = !song.isPlaying
         }
     }
     
@@ -56,6 +57,11 @@ final class FeedCell: UITableViewCell {
     func switchPlayPauseButtonImage(isPlaying: Bool) {
         let image = isPlaying ? #imageLiteral(resourceName: "ic_pause_rounded") : #imageLiteral(resourceName: "ic_play_rounded")
         playPauseButton.setImage(image, for: .normal)
+    }
+    
+    func showDuration(currentTime: TimeInterval, duration: TimeInterval) {
+        durationLabel.isHidden = false
+        durationLabel.text = "\(currentTime.toTime()) / \(duration.toTime())"
     }
     
     @IBAction func goToPlayerButtonTapped(_ sender: UIButton) {

@@ -64,21 +64,14 @@ final class PlayerViewController: UIViewController {
     
     private func calculateDuration() {
         guard let player = viewModel.playerService.player else { return }
-        
-        let duration = Int(player.duration)
-        let minutes = duration / 60
-        let seconds = (duration - minutes / 60) % 60
-        durationLabel.text = NSString(format: "%d:%02d", minutes, seconds) as String
+      
+        durationLabel.text = player.duration.toTime()
     }
     
     private func updateTime() {
         guard let player = viewModel.playerService.player, player.isPlaying else { return }
         
-        // Update current play time
-        let currentTime = Int(player.currentTime)
-        let minutes = currentTime / 60
-        let seconds = (currentTime - minutes / 60) % 60
-        runningTimeLabel.text = NSString(format: "%d:%02d", minutes, seconds) as String
+        runningTimeLabel.text = player.currentTime.toTime()
         
         songDurationSlider.value = Float(player.currentTime * 1000.0 / player.duration)
     }

@@ -31,17 +31,28 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bind()
+        setupUI()
+        viewModel.fetchSongs()
+    }
+    
+    private func bind() {
         viewModel.songsSignal.bind { [weak self] songs in
-            if let me = self, songs.count > 0 {
-                DispatchQueue.main.async {
-                    me.refreshControl.endRefreshing()
-                    me.tableView.reloadData()
-                }
+            guard let me = self, songs.count > 0 else { return }
+            
+            DispatchQueue.main.async {
+                me.refreshControl.endRefreshing()
+                me.tableView.reloadData()
             }
         }
         
-        setupUI()
-        viewModel.fetchSongs()
+        viewModel.isPlayingSignal.bind { [weak self] (isPlaying) in
+            guard let me = self else { return }
+            
+            DispatchQueue.main.async {
+                me.miniPlayerViewController.updatePlayPauseButtonImage(isPlaying: isPlaying)
+            }
+        }
     }
     
     private func setupUI() {
@@ -133,7 +144,7 @@ extension FeedViewController: FeedCellDelegate {
             
             cell.switchPlayPauseButtonImage(isPlaying: false)
             
-            miniPlayerViewController.updatePlayPauseButtonImage(isPlaying: false)
+            viewModel.isPlayingSignal.value = false
             return
         }
         
@@ -159,11 +170,15 @@ extension FeedViewController: FeedCellDelegate {
                 
                 // Update playing status on playing cell
                 cell.switchPlayPauseButtonImage(isPlaying: true)
+                if let player = me.viewModel.playerService.player {
+                    cell.showDuration(currentTime: player.currentTime, duration: player.duration)
+                }
                 
                 // Update miniPlayerViewController properties
                 me.miniPlayerViewController.view.isHidden = false
-                me.miniPlayerViewController.updatePlayPauseButtonImage(isPlaying: true)
                 me.miniPlayerViewController.song = selectedSong
+                
+                me.viewModel.isPlayingSignal.value = true
                 
                 // Update previousPlayingIndex
                 me.previousPlayingIndex = index

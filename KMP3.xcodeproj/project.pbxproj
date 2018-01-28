@@ -37,6 +37,7 @@
 		1BC202D0201CCA0B007C3E89 /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202CF201CCA0B007C3E89 /* PlayerService.swift */; };
 		1BC202D3201CCB89007C3E89 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202D2201CCB89007C3E89 /* FeedViewController.swift */; };
 		1BC202D4201CCBF7007C3E89 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC202D1201CCB80007C3E89 /* FeedViewModel.swift */; };
+		1BD0D3D4201DB430009A4025 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD0D3D3201DB430009A4025 /* TimeInterval+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		1BC202CF201CCA0B007C3E89 /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
 		1BC202D1201CCB80007C3E89 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		1BC202D2201CCB89007C3E89 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		1BD0D3D3201DB430009A4025 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				1BC2029F201C5FD1007C3E89 /* UITableView+Extension.swift */,
 				1B8A499A201CEA4F00E96682 /* UIImageView+Extension.swift */,
 				1B8A499C201CF2A100E96682 /* String+Extension.swift */,
+				1BD0D3D3201DB430009A4025 /* TimeInterval+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				1BC202AB201C5FD1007C3E89 /* UITableView+Extension.swift in Sources */,
 				1BC202D0201CCA0B007C3E89 /* PlayerService.swift in Sources */,
 				1BC202AE201C5FD1007C3E89 /* Song.swift in Sources */,
+				1BD0D3D4201DB430009A4025 /* TimeInterval+Extension.swift in Sources */,
 				1B8A499B201CEA4F00E96682 /* UIImageView+Extension.swift in Sources */,
 				1BC202C2201C5FE3007C3E89 /* PlayerViewController.swift in Sources */,
 				1BC202D3201CCB89007C3E89 /* FeedViewController.swift in Sources */,
