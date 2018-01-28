@@ -20,6 +20,7 @@ final class FeedViewModel {
         self.playerService = playerService
     }
     
+    // Fetch songs from network
     func fetchSongs() {
         networkService.fetchSongs(from: url) { [weak self] (result) in
             switch result {

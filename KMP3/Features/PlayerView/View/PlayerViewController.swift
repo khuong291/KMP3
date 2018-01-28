@@ -36,8 +36,22 @@ final class PlayerViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        bind()
         
+        // Use timer to update slider and time label every 1 second
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateValue), userInfo: nil, repeats: true)
+    }
+    
+    private func bind() {
+        viewModel.playerService.currentSongSignal.bind { (song) in
+            guard let _ = song else {
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.setupUI()
+            }
+        }
     }
     
     @objc func updateValue() {
@@ -58,12 +72,14 @@ final class PlayerViewController: UIViewController {
         calculateDuration()
     }
     
+    // Switch between pause and play image depend on player is playing
     private func setupPlayPauseButtonImage() {
         let isPlaying = viewModel.playerService.isPlaying()
         let image = isPlaying ? #imageLiteral(resourceName: "ic_pause") : #imageLiteral(resourceName: "ic_player_play")
         playPauseButton.setImage(image, for: .normal)
     }
     
+    // Calculate the duration of current song
     private func calculateDuration() {
         guard let player = viewModel.playerService.player else {
             return
@@ -72,6 +88,7 @@ final class PlayerViewController: UIViewController {
         durationLabel.text = player.duration.toTime()
     }
     
+    // Update running time
     private func updateTime() {
         guard let player = viewModel.playerService.player, player.isPlaying else {
             return
@@ -82,6 +99,7 @@ final class PlayerViewController: UIViewController {
         songDurationSlider.value = Float(player.currentTime * 1000.0 / player.duration)
     }
     
+    // Dismiss this controller and remove timer
     @IBAction func minimizeButtonTapped(_ sender: UIButton) {
         if timer != nil {
             timer.invalidate()
@@ -91,6 +109,7 @@ final class PlayerViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // Play or pause current song and update the button image
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
         guard let song = viewModel.playerService.currentSongSignal.value else {
             return
@@ -100,11 +119,41 @@ final class PlayerViewController: UIViewController {
         setupPlayPauseButtonImage()
     }
     
+    // Play previous song
     @IBAction func playPreviousButtonTapped(_ sender: UIButton) {
+        guard let currentSong = viewModel.playerService.currentSongSignal.value else {
+            return
+        }
         
+        let songs = viewModel.songsSignal.value
+        
+        let currentIndex = songs.index { $0.id == currentSong.id }!
+        let previousIndex = (currentIndex - 1 + songs.count) % songs.count
+        let previousSong = songs[previousIndex]
+        
+        let currentTime = viewModel.playerService.player.currentTime
+        
+        // If current song is played less than 3 seconds then play back again
+        if currentTime < 3 {
+            viewModel.playerService.play(song: currentSong, forcePlayAgain: true)
+            return
+        }
+        // Otherwise play previous song
+        viewModel.playerService.play(song: previousSong)
     }
     
+    // Play next song
     @IBAction func playNextButtonTapped(_ sender: UIButton) {
+        guard let currentSong = viewModel.playerService.currentSongSignal.value else {
+            return
+        }
         
+        let songs = viewModel.songsSignal.value
+
+        let currentIndex = songs.index { $0.id == currentSong.id }!
+        let nextIndex = (currentIndex + 1) % songs.count
+        let nextSong = songs[nextIndex]
+        
+        viewModel.playerService.play(song: nextSong)
     }
 }

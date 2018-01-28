@@ -34,21 +34,26 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
     }
     
     // Play a song
-    func play(song: Song) {
+    func play(song: Song, forcePlayAgain: Bool = false) {
         guard let currentSong = currentSongSignal.value, currentSong.id == song.id else {
             fetchAndPlayAsNew(song: song)
             return
         }
         
-        if player.isPlaying {
-            player.pause()
+        if forcePlayAgain {
+            player.currentTime = 0
         } else {
-            player.play()
+            if player.isPlaying {
+                player.pause()
+            } else {
+                player.play()
+            }
         }
         
         currentSongSignal.value = currentSongSignal.value
     }
 
+    // Fetch audio file then assign currentSongSignal to a new value
     private func fetchAndPlayAsNew(song: Song) {
         fetch(url: song.audioLink, completion: { data in
             guard let data = data else {
