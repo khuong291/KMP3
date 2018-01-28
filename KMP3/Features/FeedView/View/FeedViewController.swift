@@ -84,7 +84,7 @@ final class FeedViewController: UIViewController {
         )
         
         Constraint.on(
-            miniPlayerViewController.view.heightAnchor.constraint(equalToConstant: 50),
+            miniPlayerViewController.view.heightAnchor.constraint(equalToConstant: 70),
             miniPlayerViewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
             miniPlayerViewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
             miniPlayerViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
