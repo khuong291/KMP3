@@ -19,6 +19,11 @@ final class MiniPlayerViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    func updatePlayPauseButtonImage(isPlaying: Bool) {
+        let image = isPlaying ? #imageLiteral(resourceName: "ic_pause_small") : #imageLiteral(resourceName: "ic_player_play_small")
+        playPauseButton.setImage(image, for: .normal)
+    }
+    
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {
         
     }

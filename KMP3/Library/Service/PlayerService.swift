@@ -16,16 +16,30 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
         self.cacheService = cacheService
     }
     
-    func play(from url: URL) {
+    func isPlaying() -> Bool {
+        guard player != nil else { return false }
+            
+        return player.isPlaying
+    }
+    
+    func play(from url: URL, completion: @escaping (Bool) -> Void) {
         fetch(url: url, completion: { data in
             if let data = data {
                 self.player = try! AVAudioPlayer(data: data)
                 self.player.delegate = self
                 self.player.play()
+                completion(true)
+            } else {
+                completion(false)
             }
         })
     }
     
+    func pause() {
+        guard player != nil else { return }
+        
+        player.pause()
+    }
     
     /// fetch song from memory, if there is no data then fetch song from disk, if there is no data then download song from network
     ///

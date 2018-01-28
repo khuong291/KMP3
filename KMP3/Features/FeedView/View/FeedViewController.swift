@@ -16,6 +16,8 @@ final class FeedViewController: UIViewController {
     let viewModel: FeedViewModel
     let miniPlayerViewController = MiniPlayerViewController()
     
+    var previousPlayingIndex = -1
+    
     init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
         
@@ -43,6 +45,7 @@ final class FeedViewController: UIViewController {
     }
     
     private func setupUI() {
+        // Shift table over status bar
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
@@ -58,6 +61,7 @@ final class FeedViewController: UIViewController {
         view.addSubview(tableView)
         addChildViewController(miniPlayerViewController)
         view.addSubview(miniPlayerViewController.view)
+        miniPlayerViewController.view.isHidden = true
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
@@ -100,6 +104,7 @@ extension FeedViewController: UITableViewDelegate {
         
         let song = viewModel.songsSignal.value[indexPath.row]
         cell.song = song
+        cell.row = indexPath.row
         cell.delegate = self
     }
     
@@ -115,8 +120,53 @@ extension FeedViewController: FeedCellDelegate {
         present(playerVC, animated: true, completion: nil)
     }
     
-    func didSelectPlayPauseButton(_ song: Song) {
-        viewModel.playerService.play(from: song.audioLink)
+    func didSelectPlayPauseButton(_ song: Song, at index: Int) {
+        // Pause if playing
+        if previousPlayingIndex == index, viewModel.playerService.isPlaying() {
+            viewModel.playerService.pause()
+            
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) as? FeedCell {
+                cell.switchPlayPauseButtonImage(isPlaying: false)
+            }
+            
+            miniPlayerViewController.updatePlayPauseButtonImage(isPlaying: false)
+            return
+        }
+        
+        // Play song
+        viewModel.playerService.play(from: song.audioLink) { [weak self] isPlaying in
+            guard let me = self, isPlaying else { return }
+            
+            // Reset all song playing states to false
+            me.viewModel.songsSignal.value.forEach {
+                $0.isPlaying = false
+            }
+    
+            // Update isPlaying state on the cell selected
+            me.viewModel.songsSignal.value[index].isPlaying = true
+            
+            DispatchQueue.main.async {
+                let preIndexPath = IndexPath(row: me.previousPlayingIndex, section: 0)
+                // Update playing status on previous playing cell
+                if let cell = me.tableView.cellForRow(at: preIndexPath) as? FeedCell {
+                    cell.switchPlayPauseButtonImage(isPlaying: false)
+                }
+                
+                let indexPath = IndexPath(row: index, section: 0)
+                
+                // Update playing status on playing cell
+                if let cell = me.tableView.cellForRow(at: indexPath) as? FeedCell {
+                    cell.switchPlayPauseButtonImage(isPlaying: true)
+                }
+                
+                me.miniPlayerViewController.view.isHidden = false
+                me.miniPlayerViewController.updatePlayPauseButtonImage(isPlaying: true)
+                
+                // Update previousPlayingIndex
+                me.previousPlayingIndex = index
+            }
+        }
     }
 }
 
