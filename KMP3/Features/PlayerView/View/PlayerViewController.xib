@@ -13,8 +13,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="KMP3" customModuleProvider="target">
             <connections>
+                <outlet property="authorNameLabel" destination="x3D-vY-s4j" id="YWx-UN-Ifb"/>
+                <outlet property="durationLabel" destination="Hrs-nO-2FQ" id="TBO-Ul-Lvh"/>
+                <outlet property="playPauseButton" destination="NSh-AW-gSe" id="wUt-sP-5nR"/>
+                <outlet property="runningTimeLabel" destination="NWe-wt-BCs" id="Guc-lw-67C"/>
                 <outlet property="songDurationSlider" destination="Gko-n5-KcX" id="WUC-kT-KF4"/>
                 <outlet property="songImageView" destination="mKe-GJ-Wej" id="Ver-87-4IE"/>
+                <outlet property="songNameLabel" destination="YvJ-SM-2Cb" id="M4c-1M-dAW"/>
                 <outlet property="view" destination="j3r-j7-5RE" id="DFO-Iv-JoI"/>
             </connections>
         </placeholder>
@@ -69,43 +74,46 @@
                     <rect key="frame" x="0.0" y="407" width="375" height="260"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvJ-SM-2Cb">
-                            <rect key="frame" x="134.5" y="18.5" width="106" height="24"/>
+                            <rect key="frame" x="134.5" y="24.5" width="106" height="24"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3D-vY-s4j">
-                            <rect key="frame" x="140" y="48.5" width="95.5" height="19.5"/>
+                            <rect key="frame" x="140" y="54.5" width="95.5" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" red="0.15686274509803921" green="0.17254901960784313" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHc-GE-Yrd" userLabel="PrevButton">
-                            <rect key="frame" x="98" y="183" width="16" height="22"/>
+                            <rect key="frame" x="98" y="186" width="16" height="22"/>
                             <state key="normal" image="ic_player_prev"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NSh-AW-gSe" userLabel="PlayButton">
-                            <rect key="frame" x="174" y="178" width="27" height="32"/>
-                            <state key="normal" image="ic_player_play"/>
+                            <rect key="frame" x="174" y="184" width="27" height="26"/>
+                            <state key="normal" image="ic_pause"/>
+                            <connections>
+                                <action selector="playPauseButtonTapped:" destination="-1" eventType="touchUpInside" id="0yO-so-JIg"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVw-Tr-Ko9" userLabel="NextButton">
-                            <rect key="frame" x="261" y="183" width="16" height="22"/>
+                            <rect key="frame" x="261" y="186" width="16" height="22"/>
                             <state key="normal" image="ic_player_next"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWe-wt-BCs">
-                            <rect key="frame" x="25" y="87" width="30.5" height="17"/>
+                            <rect key="frame" x="25" y="93" width="30.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.15686274509803921" green="0.17254901960784313" blue="0.20000000000000001" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrs-nO-2FQ">
-                            <rect key="frame" x="319.5" y="87" width="30.5" height="17"/>
+                            <rect key="frame" x="319.5" y="93" width="30.5" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.15686274509803921" green="0.17254901960784313" blue="0.20000000000000001" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-n5-KcX">
-                            <rect key="frame" x="23" y="108" width="329" height="31"/>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-n5-KcX">
+                            <rect key="frame" x="23" y="114" width="329" height="31"/>
                         </slider>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,8 +160,8 @@
     <resources>
         <image name="bg_player" width="320" height="568"/>
         <image name="ic_arrow_minimize" width="13" height="8"/>
+        <image name="ic_pause" width="27" height="26"/>
         <image name="ic_player_next" width="16" height="16"/>
-        <image name="ic_player_play" width="27" height="32"/>
         <image name="ic_player_prev" width="16" height="16"/>
     </resources>
 </document>

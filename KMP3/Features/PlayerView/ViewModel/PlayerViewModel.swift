@@ -9,9 +9,11 @@ import Foundation
 
 final class PlayerViewModel {
     
-    let song: Song
+    let playerService: PlayerService
+    let songSignal = Binding<Song?>(value: nil)
     
-    init(song: Song) {
-        self.song = song
+    init(song: Song, playerService: PlayerService) {
+        self.songSignal.value = song
+        self.playerService = playerService
     }
 }

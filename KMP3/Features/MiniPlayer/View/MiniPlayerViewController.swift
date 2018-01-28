@@ -10,6 +10,7 @@ import UIKit
 
 protocol MiniPlayerViewControllerDelegate: class {
     func didSelectPlayPauseButton(_ viewController: MiniPlayerViewController, song: Song)
+    func didSelectGoToPlayerButton(_ viewController: MiniPlayerViewController, song: Song)
 }
 
 final class MiniPlayerViewController: UIViewController {
@@ -37,6 +38,12 @@ final class MiniPlayerViewController: UIViewController {
     func updatePlayPauseButtonImage(isPlaying: Bool) {
         let image = isPlaying ? #imageLiteral(resourceName: "ic_pause_small") : #imageLiteral(resourceName: "ic_player_play_small")
         playPauseButton.setImage(image, for: .normal)
+    }
+    
+    @IBAction func gotoPlayer(_ sender: UIButton) {
+        guard let song = song else { return }
+        
+        delegate?.didSelectGoToPlayerButton(self, song: song)
     }
     
     @IBAction func playPauseButtonTapped(_ sender: UIButton) {

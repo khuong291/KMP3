@@ -115,10 +115,15 @@ extension FeedViewController: UITableViewDelegate {
 }
 
 extension FeedViewController: FeedCellDelegate {
-    func didSelectGoToPlayerButton(_ cell: FeedCell, song: Song) {
-        let viewModel = PlayerViewModel(song: song)
+    
+    fileprivate func presentPlayerController(song: Song, playerService: PlayerService) {
+        let viewModel = PlayerViewModel(song: song, playerService: playerService)
         let playerVC = PlayerViewController(viewModel: viewModel)
         present(playerVC, animated: true, completion: nil)
+    }
+    
+    func didSelectGoToPlayerButton(_ cell: FeedCell, song: Song) {
+        presentPlayerController(song: song, playerService: self.viewModel.playerService)
     }
     
     func didSelectPlayPauseButton(_ cell: FeedCell, song: Song, at index: Int) {
@@ -174,6 +179,10 @@ extension FeedViewController: MiniPlayerViewControllerDelegate {
         if let cell = tableView.cellForRow(at: indexPath) as? FeedCell {
             didSelectPlayPauseButton(cell, song: song, at: previousPlayingIndex)
         }
+    }
+    
+    func didSelectGoToPlayerButton(_ viewController: MiniPlayerViewController, song: Song) {
+        presentPlayerController(song: song, playerService: viewModel.playerService)
     }
 }
 
