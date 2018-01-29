@@ -1,4 +1,3 @@
-### Bandlab test assignment
 # KMP3
 
 This is a simple player app for showing list of songs and playing them.
@@ -37,15 +36,15 @@ Time spent: <13 hours>
 
 - Common folder contains Binding class for binding data and Constraint class for setting constraint. I am a fan of RxSwift, I love binding and reacting so I decide to write my own Binding class, it's lightweight but I ensure it's enough for work.
 
-- Service folder contains many class service inside: NetworkService, PlayerService, CacheService, ImageFetchingService. Each service only performs its task.
+- Service folder contains many class service inside: NetworkService, PlayerService, CacheService, ImageFetchingService. Each service only performs its task mean each services follow single responsibility principle.
 
 - NetworkService handle fetching data from network.
 
-- PlayerService handle fetching audio and playing it.
+- PlayerService handle fetching audio and playing it. It follows single source of truth pattern.
 
-- CacheService handle saving and loading data. It works as follows: Memory -> Disk -> Network
+- CacheService handle saving and loading data. It works as follows: Memory -> Disk -> Network. You see the save function, I need to convert file path to base64 because the image url is: https://bandlab-test-images.azureedge.net/v1.0/users/71c81538-4e88-e511-80c6-000d3aa03fb0/636016633463395803/. It has multiple splashes, so avoid the empty directory.
 
-- ImageFetchingService handle fetching image. 
+- ImageFetchingService handle fetching image. Each time the fetch function is called, the task must be cancel to avoid multiple downloading data, then I find the data from Memory -> Disk, if I don't find any data in there, then download data from network and cache this data.
 
 - I write Unit Test or UI Test immediately once I finish writing some functions. For example: when I finish designing model for Song, then I create a class SongTests.swift and write some test cases for testing whether it can be parsed or not.
 
