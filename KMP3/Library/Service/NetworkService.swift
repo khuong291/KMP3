@@ -12,13 +12,15 @@ struct DataHolder<T: Codable>: Codable {
 }
 
 class NetworkService {
-    let session: URLSession
+    private let session: URLSession
+    
+    private let url = URL(string: "https://gist.githubusercontent.com/anonymous/fec47e2418986b7bdb630a1772232f7d/raw/5e3e6f4dc0b94906dca8de415c585b01069af3f7/57eb7cc5e4b0bcac9f7581c8.json")!
     
     init(config: URLSessionConfiguration = URLSessionConfiguration.default) {
         self.session = URLSession(configuration: config)
     }
     
-    func fetchSongs(from url: URL, completion: @escaping (Result<[Song]>) -> ()) {
+    func fetchSongs(completion: @escaping (Result<[Song]>) -> ()) {
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
