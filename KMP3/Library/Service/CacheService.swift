@@ -11,10 +11,12 @@ import UIKit
 /// This service is used to manage memory and disk cache
 final class CacheService {
     
-    let memory = NSCache<NSString, NSData>()
-    let diskPath: URL
+    private let memory = NSCache<NSString, NSData>() // For get or load data in memory
+    private let diskPath: URL // The path url that contain cached files (mp3 files and image files)
+    private let fileManager: FileManager // For checking file or directory exists in a specified path
     
     init(fileManager: FileManager = FileManager.default) {
+        self.fileManager = fileManager
         do {
             let documentDirectory = try fileManager.url(
                 for: .documentDirectory,
@@ -51,6 +53,7 @@ final class CacheService {
             completion(nil)
         }
     }
+    
     
     func loadImage(url: URL, completion: @escaping (UIImage?) -> Void) {
         loadData(url: url, completion: { data in
@@ -92,8 +95,21 @@ final class CacheService {
         }
     }
     
+    /// By checking song's url, if the song was cached, then return it's cache path URL, if the song wasn't cached, then return nil
+    func exists(url: URL) -> URL? {
+        let fileURL = filePath(url: url)
+        return fileManager.fileExists(atPath: fileURL.path) ? fileURL : nil
+    }
+
+    
     private func filePath(url: URL) -> URL {
-        // Use base64 to avoid multiple splashes 
-        return diskPath.appendingPathComponent(url.path.toBase64())
+        // Use base64 to avoid multiple splashes
+        let diskURL = diskPath.appendingPathComponent(url.path.toBase64())
+        // AVPlayer needs url to be of mp3 extension to play
+        if url.pathExtension == "mp3" {
+            return diskURL.appendingPathExtension("mp3")
+        } else {
+            return diskURL
+        }
     }
 }

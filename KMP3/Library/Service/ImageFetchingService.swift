@@ -40,6 +40,7 @@ final class ImageFetchingService {
                     }
                     
                     if let data = data {
+                        // Save data to memory and disk
                         self?.cacheService.save(data: data, url: url)
                         DispatchQueue.main.async {
                             if let image = UIImage(data: data) {

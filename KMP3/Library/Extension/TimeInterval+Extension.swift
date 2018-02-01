@@ -2,7 +2,7 @@
 //  TimeInterval+Extension.swift
 //  KMP3
 //
-//  Created by KhuongPham on 1/28/18.
+//  Created by KhuongPham on 2/2/18.
 //
 
 import Foundation

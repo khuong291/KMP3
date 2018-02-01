@@ -8,14 +8,16 @@
 import AVFoundation
 import UIKit
 
-final class PlayerService: NSObject, AVAudioPlayerDelegate {
-    let cacheService: CacheService
-    var player: AVAudioPlayer!
+final class PlayerService: NSObject {
+    private let cacheService: CacheService
+    private(set) var player: AVPlayer!
+    private var progressSet = Set<URL>() // Use for checking which song is being downloaded
     
     /// Signal for the current playing song. Initially there is no playing song yet
     let currentSongSignal = Binding<Song?>(value: nil)
     
     init(cacheService: CacheService) {
+        player = AVPlayer()
         self.cacheService = cacheService
     }
     
@@ -23,10 +25,6 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
     /// Check if current song is playing
     func isPlaying() -> Bool {
         guard currentSongSignal.value != nil else {
-            return false
-        }
-        
-        guard player != nil else {
             return false
         }
             
@@ -41,7 +39,8 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
         }
         
         if forcePlayAgain {
-            player.currentTime = 0
+            // Seek time to 0
+            player.seek(to: CMTime(seconds: 0, preferredTimescale: 1))
         } else {
             if player.isPlaying {
                 player.pause()
@@ -53,20 +52,9 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
         currentSongSignal.value = currentSongSignal.value
     }
 
-    /// Fetch audio file then assign currentSongSignal to a new value
-    private func fetchAndPlayAsNew(song: Song) {
-        fetch(url: song.audioLink, completion: { data in
-            guard let data = data else {
-                return
-            }
-            
-            self.player = try! AVAudioPlayer(data: data)
-            self.player.delegate = self
-            self.player.play()
-            
-            // Signal that the song is in current
-            self.currentSongSignal.value = song
-        })
+    /// Seek player to time
+    func seekToTime(_ time: Double) {
+        player.seek(to: CMTime(value: CMTimeValue(time), timescale: 1))
     }
     
     /// Pause current playing song
@@ -76,6 +64,29 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
             currentSongSignal.value = currentSongSignal.value
         }
     }
+
+    /// Fetch audio file then assign currentSongSignal to a new value
+    private func fetchAndPlayAsNew(song: Song) {
+        // Check if this song was cached
+        if let url = cacheService.exists(url: song.audioLink) {
+            let item = AVPlayerItem(url: url)
+            player.replaceCurrentItem(with: item)
+            player.play()
+        } else { // Otherwise play stream this song from network
+            let item = AVPlayerItem(url: song.audioLink)
+            player.replaceCurrentItem(with: item)
+            player.play()
+            
+            // In parallel, if this song is not in download progress then save this song data
+            if !progressSet.contains(song.audioLink) {
+                downloadAndSave(url: song.audioLink)
+            }
+            // insert the download progress of this song into Set
+            progressSet.insert(song.audioLink)
+        }
+        
+        self.currentSongSignal.value = song
+    }
     
     /// fetch song from memory, if there is no data then fetch song from disk, if there is no data then download song from network
     ///
@@ -84,9 +95,9 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
     ///   - completion: callback to return data
     private func fetch(url: URL, completion: @escaping (Data?) -> Void) {
         cacheService.loadData(url: url, completion: { [weak self] data in
-            if let data = data {
+            if let data = data { // If audio data was cached
                 completion(data)
-            } else if let data = try? Data(contentsOf: url) {
+            } else if let data = try? Data(contentsOf: url) { // Download audio data and save to memory and disk
                 completion(data)
                 self?.cacheService.save(data: data, url: url)
             } else {
@@ -95,14 +106,14 @@ final class PlayerService: NSObject, AVAudioPlayerDelegate {
         })
     }
     
-    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        if let error = error {
-            print(error)
+    // Download audio data and save to memory and disk
+    private func downloadAndSave(url: URL) {
+        DispatchQueue.global().async { // Use background queue because Data(contentOf: url) dispatched in main thread
+            if let data = try? Data(contentsOf: url) {
+                self.cacheService.save(data: data, url: url)
+            }
         }
     }
-    
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        print(flag)
-    }
+
 }
 

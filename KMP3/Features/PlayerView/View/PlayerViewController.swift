@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 final class PlayerViewController: UIViewController {
     
@@ -20,7 +21,7 @@ final class PlayerViewController: UIViewController {
     
     let viewModel: PlayerViewModel
     
-    var timer: Timer!
+    private var timer: Timer!
     
     init(viewModel: PlayerViewModel) {
         self.viewModel = viewModel
@@ -82,26 +83,26 @@ final class PlayerViewController: UIViewController {
     
     /// Calculate the duration of current song
     private func calculateDuration() {
-        guard let player = viewModel.playerService.player else {
-            return
-        }
-      
-        durationLabel.text = player.duration.toTime()
+        durationLabel.text = viewModel.playerService.player.duration?.toTime()
     }
     
     /// Update running time
     private func updateTime() {
-        guard let player = viewModel.playerService.player, player.isPlaying else {
+        guard let player = viewModel.playerService.player,
+            viewModel.playerService.isPlaying(),
+            let duration = player.duration, duration > 0 else {
             return
         }
         
-        runningTimeLabel.text = player.currentTime.toTime()
+        runningTimeLabel.text = player.currentTime().seconds.toTime()
         
-        songDurationSlider.value = Float(player.currentTime * 1000.0 / player.duration)
+        let currentTime = player.currentTime().seconds
+        songDurationSlider.value = Float(currentTime * 1000.0 / duration)
     }
     
     /// Dismiss this controller and remove timer
     @IBAction func minimizeButtonTapped(_ sender: UIButton) {
+        // Need invalidate time before dismissed
         if timer != nil {
             timer.invalidate()
             timer = nil
@@ -131,10 +132,10 @@ final class PlayerViewController: UIViewController {
         let songs = viewModel.songsSignal.value
         
         let currentIndex = songs.index { $0.id == currentSong.id }!
-        let previousIndex = (currentIndex - 1 + songs.count) % songs.count
+        let previousIndex = (currentIndex - 1 + songs.count) % songs.count // For play song circurlaly
         let previousSong = songs[previousIndex]
         
-        let currentTime = viewModel.playerService.player.currentTime
+        let currentTime = viewModel.playerService.player.currentTime().seconds
         
         // If current song is played less than 3 seconds then play previous song
         if currentTime < 3 {
@@ -154,7 +155,7 @@ final class PlayerViewController: UIViewController {
         let songs = viewModel.songsSignal.value
 
         let currentIndex = songs.index { $0.id == currentSong.id }!
-        let nextIndex = (currentIndex + 1) % songs.count
+        let nextIndex = (currentIndex + 1) % songs.count // For play song circurlaly
         let nextSong = songs[nextIndex]
         
         viewModel.playerService.play(song: nextSong)
@@ -166,7 +167,9 @@ final class PlayerViewController: UIViewController {
             return
         }
         
-        let time = (Double(sender.value / sender.maximumValue) * player.duration)
-        viewModel.playerService.player.currentTime = time
+        let duration = player.duration ?? 0
+        let time = (Double(sender.value / sender.maximumValue) * duration)
+        
+        viewModel.playerService.seekToTime(time)
     }
 }
