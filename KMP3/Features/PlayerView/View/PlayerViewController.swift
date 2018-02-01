@@ -136,13 +136,13 @@ final class PlayerViewController: UIViewController {
         
         let currentTime = viewModel.playerService.player.currentTime
         
-        // If current song is played less than 3 seconds then play back again
+        // If current song is played less than 3 seconds then play previous song
         if currentTime < 3 {
-            viewModel.playerService.play(song: currentSong, forcePlayAgain: true)
+            viewModel.playerService.play(song: previousSong)
             return
         }
-        // Otherwise play previous song
-        viewModel.playerService.play(song: previousSong)
+        // Otherwise play back again
+        viewModel.playerService.play(song: currentSong, forcePlayAgain: true)
     }
     
     /// Play next song
